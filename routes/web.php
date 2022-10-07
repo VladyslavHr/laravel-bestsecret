@@ -19,4 +19,3 @@ Route::get('/', function () {
 
 
 // Route::get('/parsers/agriculture', [\App\Http\Controllers\ArticleController::class, 'agriculture'])->name('parsers.agriculture');
-Route::any('/parsers', [\App\Http\Controllers\ParserController::class, 'ac_parsePage']);
