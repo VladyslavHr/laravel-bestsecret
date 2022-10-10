@@ -19,22 +19,51 @@ class ParserController extends Controller
 
         $products = $arr['products'];
 
+        // $code = preg_replace('//', '', $product['code']);
+
+
+        $counter = [];
         foreach ($products as $product) {
-            Product::create([
-                'url' => $product['url'],
+
+            $parsed_url = parse_url($product['code']['area']);
+
+
+            $url_query = $parsed_url['query'];
+
+            parse_str($url_query, $output);
+
+            if(empty($output['code'])){
+                continue;
+            }
+
+            $sale = preg_replace('/\D/', '', $product['sale']);
+
+            $sale = abs($sale);
+
+
+            Product::updateOrCreate(['code' => $output['code'] . '-' . $output['colorCode']],[
+                'category' => $output['category'],
+                'area' => $output['area'],
                 'title' => $product['title'],
                 'sub_description' => $product['desc'],
                 'image_default' => $product['image_default'],
                 'image_additional' => $product['image_additional'],
-                'old_price' => $product['old_price'],
-                'price' => $product['price'],
-                'sale' => $product['sale'],
+                'old_price' => str_replace('RRP Kc', '', $product['old_price']) ,
+                'price' => str_replace('Kc', '', $product['price']) ,
+                'sale' => str_replace('%', '', $product['sale']),
+                'sale' => $sale,
             ]);
+
+
+            @$counter[$output['code']] += 1;
+
         }
+
 
         return([
             'status' => 'ok',
             'products' => $products,
+            'counter' => $counter,
         ]);
 
 

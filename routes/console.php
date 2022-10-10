@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+
+Artisan::command('parse', function() {
+
+    $parsed_url = parse_url('https://www.bestsecret.com/product.htm?listName=Men%2fAccessories%2fBelts&position=1&code=31672611&colorCode=10&area=MEN_ACCESSORIES&gender=MALE&back_url=%2fcategory.htm&originProdLink=&back_param_category=men_accessoires_guertel&back_param_gender=MALE&back_param_area=MEN_ACCESSORIES&back_param_sort_by=topseller&back_param_back_url=%2fcategory_menu.htm');
+
+    $url_query = $parsed_url['query'];
+
+    parse_str($url_query, $output);
+
+    print_r($output);
+});

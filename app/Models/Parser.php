@@ -10,14 +10,14 @@ class Parser extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'url',
-        'sub_description',
-        'image_default',
-        'image_additional',
-        'old_price',
-        'price',
-        'sale',
+        // 'title',
+        // 'code',
+        // 'sub_description',
+        // 'image_default',
+        // 'image_additional',
+        // 'old_price',
+        // 'price',
+        // 'sale',
     ];
 
     protected $dates = [
