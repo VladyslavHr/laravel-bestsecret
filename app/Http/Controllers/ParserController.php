@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Parser,Product};
+use App\Models\{Parser,Product,ProductGallery};
 use Illuminate\Http\Request;
 use simplehtmldom\HtmlWeb;
 use Illuminate\Support\Facades\Http;
@@ -10,6 +10,89 @@ use Illuminate\Support\Facades\Http;
 
 class ParserController extends Controller
 {
+    public function ac_get_product_info()
+    {
+        $product = Product::where('description', null)->first();
+
+        $code = explode('-', $product->code)[0];
+
+        $url = "https://www.bestsecret.com/product.htm?code=$code";
+
+        return [
+            'status' => 'ok',
+            'url' => $url,
+        ];
+    }
+
+    public function ac_save_product_gallery()
+    {
+        $json = file_get_contents('php://input');
+
+        $arr = json_decode($json, true);
+
+        $images = $arr['images'];
+
+        foreach ($images as $image) {
+            ProductGallery::updateOrCreate([
+                'product_id' => $image['product_id'],
+                'image' => $image['image'],
+            ]);
+        }
+
+        return([
+            'status' => 'ok',
+            'images' => $images,
+        ]);
+    }
+
+    public function ac_save_product_info()
+    {
+        $json = file_get_contents('php://input');
+
+        $arr = json_decode($json, true);
+
+        $products = $arr['products'];
+
+        // $counter = [];
+        foreach ($products as $product) {
+
+            // $parsed_url = parse_url($product['url']);
+
+
+            // $url_query = $parsed_url['query'];
+
+            // parse_str($url_query, $url_params);
+
+            // if(empty($url_params['code'])){
+            //     continue;
+            // }
+
+            // $sale = preg_replace('/\D/', '', $product['sale']);
+
+            // $sale = abs($sale);
+
+
+            Product::update([
+                'description' => $product['description'],
+                'color' => $product['color'],
+                'size' => $product['size'],
+                'amount' => $product['amount'],
+            ]);
+
+
+            // @$counter[$output['code']] += 1;
+
+        }
+
+
+        return([
+            'status' => 'ok',
+            'products' => $products,
+            // 'counter' => $counter,
+        ]);
+
+    }
+
     public function ac_parsePage()
     {
 
@@ -25,14 +108,14 @@ class ParserController extends Controller
         $counter = [];
         foreach ($products as $product) {
 
-            $parsed_url = parse_url($product['code']['area']);
+            $parsed_url = parse_url($product['url']);
 
 
             $url_query = $parsed_url['query'];
 
-            parse_str($url_query, $output);
+            parse_str($url_query, $url_params);
 
-            if(empty($output['code'])){
+            if(empty($url_params['code'])){
                 continue;
             }
 
@@ -41,9 +124,9 @@ class ParserController extends Controller
             $sale = abs($sale);
 
 
-            Product::updateOrCreate(['code' => $output['code'] . '-' . $output['colorCode']],[
-                'category' => $output['category'],
-                'area' => $output['area'],
+            Product::updateOrCreate(['url' => $url_params['code'] . '-' . $url_params['colorCode']],[
+                'category' => $url_params['back_param_category'] ?? null,
+                'area' => $url_params['area'] ?? null,
                 'title' => $product['title'],
                 'sub_description' => $product['desc'],
                 'image_default' => $product['image_default'],
@@ -55,7 +138,7 @@ class ParserController extends Controller
             ]);
 
 
-            @$counter[$output['code']] += 1;
+            // @$counter[$output['code']] += 1;
 
         }
 
@@ -63,7 +146,7 @@ class ParserController extends Controller
         return([
             'status' => 'ok',
             'products' => $products,
-            'counter' => $counter,
+            // 'counter' => $counter,
         ]);
 
 

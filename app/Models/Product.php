@@ -17,6 +17,7 @@ class Product extends Model
         'sub_description',
         'image_default',
         'image_additional',
+        'description',
         'old_price',
         'price',
         'sale',
