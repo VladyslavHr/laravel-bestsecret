@@ -70,16 +70,16 @@ class ParserController extends Controller
             // $sale = preg_replace('/\D/', '', $product['sale']);
 
             // $sale = abs($sale);
+            $product = Product::where()->first();
 
-
-            Product::update([
+            Product::updateOrCreate([
                 'description' => $product['description'],
                 'color' => $product['color'],
                 'size' => $product['size'],
                 'amount' => $product['amount'],
             ]);
 
-
+            // $saved = $product->update($data);
             // @$counter[$output['code']] += 1;
 
         }
