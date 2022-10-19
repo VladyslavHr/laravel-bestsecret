@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::any('/savePage', [\App\Http\Controllers\ParserController::class, 'ac_parsePage']);
-Route::any('/getProductLink', [\App\Http\Controllers\ParserController::class, 'ac_get_product_info']);
+Route::any('/getProductLink', [\App\Http\Controllers\ParserController::class, 'ac_get_product_link']);
 Route::any('/saveProductInfo', [\App\Http\Controllers\ParserController::class, 'ac_save_product_info']);
 Route::any('/saveProductGallery', [\App\Http\Controllers\ParserController::class, 'ac_save_product_gallery']);

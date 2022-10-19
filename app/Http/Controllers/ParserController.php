@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 class ParserController extends Controller
 {
-    public function ac_get_product_info()
+    public function ac_get_product_link()
     {
         $product = Product::where('description', null)->first();
 
@@ -21,6 +21,8 @@ class ParserController extends Controller
         return [
             'status' => 'ok',
             'url' => $url,
+            'code' => $product->code,
+            'product' => $product,
         ];
     }
 
@@ -45,50 +47,20 @@ class ParserController extends Controller
         ]);
     }
 
-    public function ac_save_product_info()
+    public function ac_save_product_info(Request $request)
     {
-        $json = file_get_contents('php://input');
-
-        $arr = json_decode($json, true);
-
-        $products = $arr['products'];
-
-        // $counter = [];
-        foreach ($products as $product) {
-
-            // $parsed_url = parse_url($product['url']);
-
-
-            // $url_query = $parsed_url['query'];
-
-            // parse_str($url_query, $url_params);
-
-            // if(empty($url_params['code'])){
-            //     continue;
-            // }
-
-            // $sale = preg_replace('/\D/', '', $product['sale']);
-
-            // $sale = abs($sale);
-            $product = Product::where()->first();
-
-            Product::updateOrCreate([
-                'description' => $product['description'],
-                'color' => $product['color'],
-                'size' => $product['size'],
-                'amount' => $product['amount'],
-            ]);
-
-            // $saved = $product->update($data);
-            // @$counter[$output['code']] += 1;
-
-        }
-
+        Product::where('code', $request->code)->update([
+            'size' => implode(',', $request->product['sizes']),
+            'amount' => $request->product['amount'],
+            'color' => $request->product['color'],
+            'description' => $request->product['description'] ? $request->product['description'] : '404',
+        ]);
 
         return([
             'status' => 'ok',
-            'products' => $products,
-            // 'counter' => $counter,
+            'request' => $request->all(),
+            'sizes' => strlen(implode(',', $request->product['sizes'])),
+            'link' => $this->ac_get_product_link(),
         ]);
 
     }
@@ -124,7 +96,8 @@ class ParserController extends Controller
             $sale = abs($sale);
 
 
-            Product::updateOrCreate(['url' => $url_params['code'] . '-' . $url_params['colorCode']],[
+            Product::updateOrCreate([
+                'code' => $url_params['code'] . '-' . $url_params['colorCode']],[
                 'category' => $url_params['back_param_category'] ?? null,
                 'area' => $url_params['area'] ?? null,
                 'title' => $product['title'],

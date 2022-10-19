@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'title',
-        'url',
+        'code',
         'category',
         'area',
         'sub_description',
@@ -21,6 +21,9 @@ class Product extends Model
         'old_price',
         'price',
         'sale',
+        'color',
+        'amount',
+        'size',
     ];
 
     protected $dates = [
