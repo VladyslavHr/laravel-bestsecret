@@ -1,0 +1,51 @@
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.links-wrap{
+    position: absolute;
+    top: 42%;
+    z-index: 1;
+    display: flex;
+    left: 34%;
+}
+
+.link-for-women{
+    font-weight: bold;
+    font-size: 20px;
+    background: black;
+    margin-right: 50px;
+    padding: 25px;
+    min-width: 250px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-for-men{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 25px;
+    background: black;
+    margin-left: 50px;
+    text-align: center;
+    min-width: 250px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-for-women:hover{
+    color: #999999;
+    transition: 0.4s;
+}
+
+.link-for-men:hover{
+    color: #999999;
+    transition: 0.4s;
+}

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('code');
             $table->string('title');
             $table->string('category')->nullable();
+            $table->string('store_category')->nullable();
+            $table->string('sub_category')->nullable();
             $table->string('area')->nullable();
             $table->string('image_default')->nullable();
             $table->string('image_additional')->nullable();
@@ -26,9 +28,9 @@ return new class extends Migration
             $table->string('size')->nullable();
             $table->integer('amount')->nullable();
             $table->string('sub_description')->nullable();
-            $table->double('old_price')->nullable();
+            $table->double('old_price', 10, 2)->nullable();
             $table->integer('sale')->nullable();
-            $table->double('price')->nullable();
+            $table->double('price', 10, 2)->nullable();
             $table->timestamps();
         });
     }

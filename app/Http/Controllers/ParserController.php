@@ -26,41 +26,33 @@ class ParserController extends Controller
         ];
     }
 
-    public function ac_save_product_gallery()
-    {
-        $json = file_get_contents('php://input');
-
-        $arr = json_decode($json, true);
-
-        $images = $arr['images'];
-
-        foreach ($images as $image) {
-            ProductGallery::updateOrCreate([
-                'product_id' => $image['product_id'],
-                'image' => $image['image'],
-            ]);
-        }
-
-        return([
-            'status' => 'ok',
-            'images' => $images,
-        ]);
-    }
-
     public function ac_save_product_info(Request $request)
     {
-        Product::where('code', $request->code)->update([
+        $product = Product::where('code', $request->code)->first();
+
+        $product->update([
             'size' => implode(',', $request->product['sizes']),
             'amount' => $request->product['amount'],
             'color' => $request->product['color'],
+            'store_category' => $request->product['store_category'],
+            'sub_category' => $request->product['color'],
             'description' => $request->product['description'] ? $request->product['description'] : '404',
         ]);
+
+        foreach ($request->product['images'] as $image) {
+            ProductGallery::updateOrCreate([
+                'product_id' => $product->id,
+                'image' => $image,
+            ]);
+        }
+
 
         return([
             'status' => 'ok',
             'request' => $request->all(),
             'sizes' => strlen(implode(',', $request->product['sizes'])),
             'link' => $this->ac_get_product_link(),
+            'product' => $product,
         ]);
 
     }
@@ -97,7 +89,8 @@ class ParserController extends Controller
 
 
             Product::updateOrCreate([
-                'code' => $url_params['code'] . '-' . $url_params['colorCode']],[
+                'code' => $url_params['code'] . '-' . $url_params['colorCode']
+            ],[
                 'category' => $url_params['back_param_category'] ?? null,
                 'area' => $url_params['area'] ?? null,
                 'title' => $product['title'],

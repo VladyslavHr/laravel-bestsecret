@@ -13,6 +13,8 @@ class Product extends Model
         'title',
         'code',
         'category',
+        'store_category',
+        'sub_category',
         'area',
         'sub_description',
         'image_default',

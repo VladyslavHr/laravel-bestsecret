@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{ProductController};
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
 // Route::get('/parsers/agriculture', [\App\Http\Controllers\ArticleController::class, 'agriculture'])->name('parsers.agriculture');
+
+Route::get('/women-accessories', [\App\Http\Controllers\ProductController::class, 'womenAccessories'])->name('products.womenAccessories');
+Route::get('/men-accessories', [\App\Http\Controllers\ProductController::class, 'menAccessories'])->name('products.menAccessories');
