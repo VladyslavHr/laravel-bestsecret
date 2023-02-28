@@ -32,4 +32,8 @@ class Product extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function gallery() {
+        return $this->hasMany(ProductGallery::class)->orderByDesc('created_at');
+    }
 }

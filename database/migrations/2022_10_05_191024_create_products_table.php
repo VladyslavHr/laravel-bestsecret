@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('area')->nullable();
             $table->string('image_default')->nullable();
             $table->string('image_additional')->nullable();
-            $table->string('description')->nullable();
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('color')->nullable();
+            $table->longText('size')->nullable();
             $table->integer('amount')->nullable();
             $table->string('sub_description')->nullable();
             $table->double('old_price', 10, 2)->nullable();

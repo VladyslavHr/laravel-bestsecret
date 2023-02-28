@@ -88,6 +88,16 @@ class ParserController extends Controller
             $sale = abs($sale);
 
 
+            $price_replace = [
+                '.',
+                'Kc',
+            ];
+
+            $price_replace_sale = [
+                '.',
+                'RRP Kc',
+            ];
+
             Product::updateOrCreate([
                 'code' => $url_params['code'] . '-' . $url_params['colorCode']
             ],[
@@ -97,8 +107,10 @@ class ParserController extends Controller
                 'sub_description' => $product['desc'],
                 'image_default' => $product['image_default'],
                 'image_additional' => $product['image_additional'],
-                'old_price' => str_replace('RRP Kc', '', $product['old_price']) ,
-                'price' => str_replace('Kc', '', $product['price']) ,
+                'old_price' => str_replace($price_replace_sale, '', $product['old_price']) ,
+                // 'old_price' => str_replace('RRP Kc', '', $product['old_price']) ,
+                'price' => str_replace($price_replace, '', $product['price']) ,
+                // 'price' => str_replace('Kc', '', $product['price']) ,
                 'sale' => str_replace('%', '', $product['sale']),
                 'sale' => $sale,
             ]);

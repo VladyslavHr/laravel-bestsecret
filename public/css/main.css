@@ -1,51 +1,117 @@
-.carousel-item {
-    height: 100vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.product-wrap-card {
+    position: relative;
 }
 
-.links-wrap{
+.product-image-card{
+    display: block;
+    width: 100%;
+}
+
+.product-image-card-additional{
+    display: none;
+}
+
+.product-wrap-card:hover .product-image-card{
+    display: none;
+}
+
+.product-wrap-card:hover .product-image-card-additional{
+    display: block;
+    width: 100%;
+}
+
+.product-link{
+    text-decoration: none;
+    color: black;
+}
+
+.product-link:hover{
+    color: rgb(87, 87, 87);
+}
+
+.product-cross-price{
+    position: relative;
+    color: rgb(98 98 98);
+}
+
+.product-cross-price:after{
+    content: '';
     position: absolute;
-    top: 42%;
-    z-index: 1;
+    border-bottom: 1px solid black;
+    width: 100%;
+    left: -2px;
+    top: 55%;
+}
+
+.product-price{
+    font-size: 18px;
+}
+
+
+.category-list{
+    padding: 0;
+    list-style: none;
+    background-color: #f3f3f3;
+}
+
+.category-item{
+    font-size: 18px;
+}
+
+/* .all-link{
+    font-size: 18px;
+} */
+
+.category-list-element:hover,
+.category-item:hover{
+    background-color: #686868;
+}
+
+.category-list-link{
+    text-decoration: none;
+    color: #383636;
+    display: block;
+    padding: 5px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.category-list-link:hover{
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* Pagination */
+
+.pagination{
     display: flex;
-    left: 34%;
+    flex-wrap: wrap;
 }
 
-.link-for-women{
-    font-weight: bold;
-    font-size: 20px;
-    background: black;
-    margin-right: 50px;
-    padding: 25px;
-    min-width: 250px;
-    text-align: center;
+
+/* add to Cart */
+.add-to-cart{
+    padding: 15px 0;
+}
+
+.add-to-cart-button{
+    width: 100%;
+    border-radius: 3px;
     color: #fff;
-    text-decoration: none;
+    background-color: black;
 }
 
-.link-for-men{
-    font-weight: bold;
-    font-size: 20px;
-    padding: 25px;
-    background: black;
-    margin-left: 50px;
-    text-align: center;
-    min-width: 250px;
-    color: #fff;
-    text-decoration: none;
+/* @media (max-width: 1399px){
+    .product-wrap-card:hover .product-image-card-additional {
+        max-height: 320px;
+    }
+
+
 }
 
-.link-for-women:hover{
-    color: #999999;
-    transition: 0.4s;
-}
+@media (max-width: 1199px){
+    .product-wrap-card:hover .product-image-card-additional {
+        display: none;
+    }
 
-.link-for-men:hover{
-    color: #999999;
-    transition: 0.4s;
-}
+} */
