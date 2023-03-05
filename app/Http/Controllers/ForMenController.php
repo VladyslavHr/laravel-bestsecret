@@ -17,6 +17,9 @@ class ForMenController extends Controller
     public function showMen($code) {
 
         $product = Product::where('code', $code)->get();
+
+        $size = explode(',', $product->size);
+
         return view('forMen.show',[
             'product' => $product,
         ]);

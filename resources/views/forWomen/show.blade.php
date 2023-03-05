@@ -29,19 +29,15 @@
                 item number: {{ $product->code }}
             </span>
 
-            <select name="" id="" class="form-select">
+            <select name="size" id="size_select" class="form-select my-3">
                 @foreach ($size as $item)
                     <option value="{{ $item }}">{{ $item }}</option>
                 @endforeach
             </select>
 
-            <div class="add-to-cart">
-                <button class="btn add-to-cart-button">
-                    ADD TO CART
-                </button>
-            </div>
+            @livewire('add-to-cart-button', ['product' => $product])
 
-            <div class="description">
+            <div class="description pt-3">
                 {{ $product->description }}
             </div>
         </div>

@@ -35,8 +35,9 @@ class ParserController extends Controller
             'amount' => $request->product['amount'],
             'color' => $request->product['color'],
             'store_category' => $request->product['store_category'],
-            'sub_category' => $request->product['color'],
-            'description' => $request->product['description'] ? $request->product['description'] : '404',
+            'sub_category' => $request->product['sub_category'],
+            // 'description' => $request->product['description'] ? $request->product['description'] : '404',
+            'description' => $request->product['description'] ?: '404',
         ]);
 
         foreach ($request->product['images'] as $image) {

@@ -33,3 +33,7 @@ Route::get('/for-men', [\App\Http\Controllers\ForMenController::class, 'index'])
 Route::get('/for-men/{code}', [\App\Http\Controllers\ForMenController::class, 'showMen'])->name('forMen.show');
 Route::get('/for-women', [\App\Http\Controllers\ForWomenController::class, 'index'])->name('forWomen.index');
 Route::get('/for-women/{code}', [\App\Http\Controllers\ForWomenController::class, 'showWomen'])->name('forWomen.show');
+
+
+
+Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])->name('carts.index');
