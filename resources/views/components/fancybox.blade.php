@@ -80,14 +80,14 @@
 	>
 	  <img  src="{{ $product->image_default }}" />
 	</div>
-	@foreach ( $product->gallery as $image )
+	@foreach ( $images as $image )
 	  <div
 		class="carousel__slide"
-		data-src="{{ $image->image }}"
+		data-src="{{ $image }}"
 		data-fancybox="gallery"
 		data-caption=""
 	  >
-		<img  src="{{ $image->image }}" />
+		<img  src="{{ $image }}" />
 	  </div>
 	@endforeach
   </div>
@@ -96,9 +96,9 @@
 	  <div class="carousel__slide">
 		  <img class="panzoom__content" src="{{ $product->image_default }}" />
 	  </div>
-	  @foreach ($product->gallery as $image)
+	  @foreach ($images as $image)
 		<div class="carousel__slide">
-			<img class="panzoom__content" src="{{ $image->image }}" />
+			<img class="panzoom__content" src="{{ $image }}" />
 		</div>
 	  @endforeach
   </div>

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    @livewire('for-men-list-block', ['products' => $products])
+    @livewire('store-category', ['products' => $products])
 </div>
 
 @endsection

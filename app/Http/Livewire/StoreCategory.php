@@ -6,19 +6,22 @@ use Livewire\Component;
 use App\Models\{Product};
 use Livewire\WithPagination;
 
-class ForMenListBlock extends Component
+
+class StoreCategory extends Component
 {
+
     use WithPagination;
     public $paginationTheme = 'bootstrap';
     // public $products;
     public $category;
-    public $categories;
+    // public $categories;
     public $choosenStoreCategory = 'all';
     public $sortingSelectValue = null;
     public $sortingBy = 'title';
     public $sortingDirection = 'asc';
     public $queryParams = [];
-    public $url_back = '';
+    // public $url_back = '';
+    public $products;
 
     public function updatedSortingSelectValue()
     {
@@ -54,37 +57,35 @@ class ForMenListBlock extends Component
         $this->sortingBy = request('sortingBy') ?? 'title';
         $this->sortingDirection = request('sortingDirection') ?? 'asc';
         $this->sortingSelectValue = $this->sortingBy . '_' . $this->sortingDirection;
+        // debug($this->products);
     }
 
     public function render()
     {
-        // $products = Product::where('category', 'men_accessoires')->where('description', '!=', '404')->get();
-        $store_categories = Product::where('category', 'men_accessoires')->where('store_category', '!=', ' ')
-        // ->where('store_category', '!=', '#TRENDS')
-        // ->where('store_category', '!=', 'Ski & snowboard')
-        ->where('store_category', '!=', 'Girls')
-        // ->where('store_category', '!=', 'Babies')
-        ->distinct('store_category')->pluck('store_category');
+        // $store_categories = Product::where('category', 'men_accessoires')->where('store_category', '!=', ' ')
+        // ->where('store_category', '!=', 'Girls')
+        // ->distinct('store_category')->pluck('store_category');
 
-        $products = Product::where('category', 'men_accessoires')->where('store_category', '!=', ' ');
+        // $products = Product::where('store_category', $store_category)->where('store_category', '!=', ' ');
 
-        if ($store_category = request('store_category')) {
-            $this->choosenStoreCategory = $store_category;
-        }
+        // if ($store_category = request('store_category')) {
+        //     $this->choosenStoreCategory = $store_category;
+        // }
 
-        if ($this->choosenStoreCategory !== 'all') {
-            $products->where('store_category', $this->choosenStoreCategory);
-        }
+        // if ($this->choosenStoreCategory !== 'all') {
+        //     $products->where('store_category', $this->choosenStoreCategory);
+        // }
 
-        debug($this->choosenStoreCategory);
+        // debug($this->choosenStoreCategory);
 
-        $products = $products->orderBy($this->sortingBy, $this->sortingDirection)->paginate(150);
+        // $produtcs = $this->products;
 
-        // $this->url_back = url()->previous();
+        // debug($products);
+        // $this->products->orderBy($this->sortingBy, $this->sortingDirection)->paginate(150);
 
-        return view('livewire.for-men-list-block',[
-            'products' => $products,
-            'store_categories' => $store_categories,
+        return view('livewire.store-category',[
+            // 'products' => $products,
+            // 'store_categories' => $store_categories,
         ]);
     }
 }

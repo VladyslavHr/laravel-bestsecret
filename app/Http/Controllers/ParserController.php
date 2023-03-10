@@ -14,6 +14,10 @@ class ParserController extends Controller
     {
         $product = Product::where('description', null)->first();
 
+        if (!$product) {
+            return response()->json('No products', 404);
+        }
+
         $code = explode('-', $product->code)[0];
 
         $url = "https://www.bestsecret.com/product.htm?code=$code";

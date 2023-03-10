@@ -21,10 +21,11 @@ class Cart extends ServiceProvider
     {
         $cart = session('cart', []);
         $products = Product::whereIn('id', array_keys($cart))
-        ->get(['id', 'name', 'price', 'old_price', 'amount', 'slug']);
+        ->get(['id', 'code', 'title', 'price', 'old_price', 'sale', 'sub_category', 'amount', 'image_default']);
 
         foreach ($products as $product) {
-            $product->sum = $product->price * $cart[$product->id];
+            $product->old_sum =  $product->old_price * $cart[$product->id];
+            $product->sum = (($product->price * 0.30) + $product->price) * $cart[$product->id];
             $product->sum_formated = number_format($product->price * $cart[$product->id], 2);
             $product->cart_amount = $cart[$product->id];
         }
@@ -49,6 +50,56 @@ class Cart extends ServiceProvider
         return $total;
     }
 
+    public static function getSavingMoney()
+    {
+        if (!self::$products) {
+            self::getProducts();
+        }
+
+        // $total = 0;
+        // $old_total = 0;
+        $saving = 0;
+
+        foreach (self::$products as $product) {
+            // $total += $product->sum;
+            // $old_total += $product->old_sum;
+            $saving = self::getOldSum() - self::getTotalSum();
+        }
+
+        return $saving;
+    }
+
+    public static function getOldSum()
+    {
+        if (!self::$products) {
+            self::getProducts();
+        }
+
+        $old_total = 0;
+
+        foreach (self::$products as $product) {
+            $old_total += $product->old_sum;
+        }
+
+        return $old_total;
+    }
+
+
+    public static function getDeliverySum()
+    {
+        $deliverySum = 0;
+        $min = 1000;
+        $total = self::getTotalSum();
+
+        if ($total <= $min) {
+            $deliverySum = 109;
+        }else{
+            $deliverySum = 0;
+        }
+
+        return $deliverySum;
+    }
+
     public static function addProduct($productId, $amount = 1)
     {
         $cart = session('cart', []);
@@ -56,6 +107,9 @@ class Cart extends ServiceProvider
 			if (isset($cart[$productId])) {
 				$cart[$productId] += $amount;
 			}else{
+                if ($amount == null) {
+                    $amount = 1;
+                }
 				$cart[$productId] = $amount;
 			}
 		}else{
@@ -96,6 +150,7 @@ class Cart extends ServiceProvider
 
         return $cart_arr[$productId] * $price;
     }
+
 
     public static function clear()
     {

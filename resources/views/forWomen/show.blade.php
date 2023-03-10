@@ -4,25 +4,44 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
-            @include('components.fancybox')
+        <div class="col-lg-7">
+            <div class="carousel-wrap">
+                @include('components.fancybox')
+            </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <h3>{{ $product->title }}</h3>
-            <span>{{ $product->sub_category }}</span>
+            <div>{{ $product->sub_category }}</div>
+            <div>Color: {{ $color_string }}</div>
             <div class="price-and-sale">
-                <span>{{ $product->old_price }} CZK</span>
-                <span>{{ $product->sale }} %</span>
+                <span class="show-old-price-cross me-3">{{ number_format($product->old_price, 0, ',', ' ') }} CZK</span>
+                <span class="show-product-sale">-{{ number_format($product->sale) }} %</span>
             </div>
-            <div class="price text-danger">
-                {{ $product->price }} CZK
+            <div class="show-price">
+                {{ number_format($product->price, 0, ',', ' ')  }} CZK
             </div>
+
+            <h5>Find more ...</h5>
+            <ul class="product-categories-links">
+                <li>
+                    <a href="">
+                        {{ $product->title }}</li>
+                    </a>
+                <li>
+                    <a href="">
+                        {{ $product->sub_category }}</li>
+                    </a>
+                <li>
+                    <a href="">
+                        {{ $product->store_category }}</li>
+                    </a>
+            </ul>
             <span>
                 <p>
-                    Prices include VAT - excluding shipping
+                    {{-- Prices include VAT - excluding shipping
                     Retail price converted from the European sales price in Euro.
                     See payment information
-                    Delivery time: 4-9 working days
+                    Delivery time: 4-9 working days --}}
                 </p>
             </span>
             <span>
@@ -38,7 +57,7 @@
             @livewire('add-to-cart-button', ['product' => $product])
 
             <div class="description pt-3">
-                {{ $product->description }}
+                {!! $product->description !!}
             </div>
         </div>
     </div>
@@ -47,5 +66,6 @@
 
         </div>
     </div>
+
 </div>
 @endsection

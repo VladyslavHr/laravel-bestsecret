@@ -1,6 +1,6 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-    <ul class="nav nav-pills nav-fill">
+    {{-- <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Clothing</a>
         </li>
@@ -13,7 +13,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Accessories</a>
         </li>
-    </ul>
+    </ul> --}}
     <div class="row py-5">
         <div class="col-lg-3">
             <select wire:model="sortingSelectValue" class="form-select sorting-select">
@@ -31,12 +31,12 @@
             <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
-                        class="category-list-link all-link @if ($choosenCategorySlug === 'all')
-                            categoty-list-link-active
+                        class="category-list-link all-link @if ($choosenStoreCategory === 'all')
+                            category-list-link-active
                         @endif"
                         wire:click.prevent="changeCategory('all')">
-                            All
-                        @if ($choosenCategorySlug === 'all')
+                            All accessories
+                        @if ($choosenStoreCategory === 'all')
                             <i class="bi bi-check-lg"></i>
                         @endif
                     </a>
@@ -44,13 +44,20 @@
                 @foreach ($store_categories as $category)
                     {{-- @if (count($category->products)) --}}
                     <li class="category-list-element">
-                        <a href="#"
-                            class="category-list-link @if ($category == $choosenCategorySlug) categoty-list-link-active @endif"
-                            wire:click.prevent="changeCategory('{{ $category }}')">
+                        <a
+                            class="category-list-link @if ($category == $choosenStoreCategory) category-list-link-active @endif"
+                            wire:click.prevent="changeCategory('{{ $category }}')"
+                            data-bs-toggle="collapse" href="#collapseExample{{$category}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                             {{$category}}
-                            @if ($category == $choosenCategorySlug)
+                            @if ($category == $choosenStoreCategory)
                                 <i class="bi bi-check-lg"></i>
                             @endif
+                        </a>
+                        <a class="collapse" id="collapseExample{{$category}}">
+                            {{-- <div class="card card-body"> --}}
+                                subCategory
+                              {{-- Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger. --}}
+                            {{-- </div> --}}
                         </a>
                     </li>
                     {{-- @endif --}}
@@ -60,7 +67,7 @@
 
         @foreach ($products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 product-wrap-card pb-3">
-            <a href="{{ route('forWomen.show', $product->code) }}" class="product-link">
+            <a href="{{ route('products.show', $product->code) }}" class="product-link">
                 <img src="{{ $product->image_default }}" class="product-image-card" alt="">
                 <img src="{{ $product->image_additional }}" class="product-image-card-additional" alt="">
                 <h2 class="text-center pt-2">{{ $product->title }}</h2>
@@ -71,16 +78,21 @@
                     {{ $product->sub_description }}
                 </div>
                 <div class="prodcut-sale-wrap text-center pt-2">
-                    <span class="me-3 product-cross-price">
-                        {{ number_format($product->old_price, 0, ',', ' ') }} Kč
-                    </span>
-                    <span class="text-danger">
-                        -{{ $product->sale }} %
-                    </span>
-                </div>
-
-                <div class="text-center text-danger pt-2 product-price">
-                    <strong>{{ number_format($product->price, 0, ',', ' ') }} Kč</strong>
+                    @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
+                        <span class="me-3 product-cross-price">
+                            {{ number_format($product->old_price, 0, ',', ' ') }} Kč
+                        </span>
+                        <span class="product-sale-percent">
+                            -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
+                        </span>
+                        <div class="text-center pt-2 product-price">
+                            <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
+                        </div>
+                    @else
+                        <div class="text-center price-ws pt-2">
+                            <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong>
+                        </div>
+                    @endif
                 </div>
             </a>
         </div>

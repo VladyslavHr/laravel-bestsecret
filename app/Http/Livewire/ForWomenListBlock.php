@@ -13,7 +13,7 @@ class ForWomenListBlock extends Component
 
     public $category;
     public $categories;
-    public $choosenCategorySlug = 'all';
+    public $choosenStoreCategory = 'all';
     public $sortingSelectValue = null;
     public $sortingBy = 'title';
     public $sortingDirection = 'asc';
@@ -27,11 +27,11 @@ class ForWomenListBlock extends Component
 
     }
 
-    public function changeCategory($categorySlug)
+    public function changeCategory($storeCategory)
     {
-        $this->choosenCategorySlug = $categorySlug;
+        $this->choosenStoreCategory = $storeCategory;
 
-        $this->setQueryParams(['category' => $categorySlug]);
+        $this->setQueryParams(['store_category' => $storeCategory]);
 
     }
 
@@ -59,21 +59,24 @@ class ForWomenListBlock extends Component
     {
         // $products = Product::where('category', 'men_accessoires')->where('description', '!=', '404')->get();
         $store_categories = Product::where('category', 'women_accessoires')->where('store_category', '!=', ' ')
-        ->where('store_category', '!=', '#TRENDS')
-        ->where('store_category', '!=', 'Ski & snowboard')
-        ->where('store_category', '!=', 'Girls')
+        // ->where('store_category', '!=', '#TRENDS')
+        // ->where('store_category', '!=', 'Ski & snowboard')
+        // ->where('store_category', '!=', 'Girls')
+        ->where('description', '!=', '404')
         ->where('store_category', '!=', 'Boys')
         ->distinct('store_category')->pluck('store_category');
-        // if (request('category')) {
-        //     $this->choosenCategorySlug = request('category');
-        // }
 
-        // $this->category = Product::where($this->category, $this->choosenCategorySlug)->first();
-
-        // $store_categories = ProductCategory::all();
-
-        // $products = $this->category?->products() ?? Product::query();
         $products = Product::where('category', 'women_accessoires')->where('store_category', '!=', ' ');
+
+        if ($store_category = request('store_category')) {
+            $this->choosenStoreCategory = $store_category;
+        }
+
+        if ($this->choosenStoreCategory !== 'all') {
+            $products->where('store_category', $this->choosenStoreCategory);
+        }
+
+        debug($this->choosenStoreCategory);
 
         $products = $products->orderBy($this->sortingBy, $this->sortingDirection)->paginate(150);
         return view('livewire.for-women-list-block', [

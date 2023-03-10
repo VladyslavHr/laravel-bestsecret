@@ -11,7 +11,6 @@ class CartController extends Controller
 {
     public function index(Request $request, Product $product)
     {
-
         return view('carts.index', [
             // 'products' => Cart::getProducts(),
             // 'total_sum_product' => Cart::getTotalSum(),

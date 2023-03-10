@@ -30,8 +30,9 @@
 
     <!-- JavaScript Bundle with Popper -->
     <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
+    @livewireScripts
     <script src="{{ asset ('js/main.js?v=' . filemtime(public_path('js/main.js')) ) }}"></script>
 
-    @livewireScripts
+
 </body>
 </html>

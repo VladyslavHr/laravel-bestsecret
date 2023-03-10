@@ -10,8 +10,7 @@ class HomeController extends Controller
     public function index() {
 
         $brands = Product::where('title', '!=', ' ')
-
-        ->distinct('title')->pluck('title');
+            ->distinct('title')->pluck('title');
 
         return view('home.index', [
             'brands' => $brands,

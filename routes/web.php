@@ -30,9 +30,12 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 
 
 Route::get('/for-men', [\App\Http\Controllers\ForMenController::class, 'index'])->name('forMen.index');
-Route::get('/for-men/{code}', [\App\Http\Controllers\ForMenController::class, 'showMen'])->name('forMen.show');
+// Route::get('/for-men/{code}', [\App\Http\Controllers\ForMenController::class, 'showMen'])->name('forMen.show');
 Route::get('/for-women', [\App\Http\Controllers\ForWomenController::class, 'index'])->name('forWomen.index');
-Route::get('/for-women/{code}', [\App\Http\Controllers\ForWomenController::class, 'showWomen'])->name('forWomen.show');
+Route::get('/product/{code}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('/store-categies/{store_category}', [\App\Http\Controllers\ProductController::class, 'storeCategories'])->name('products.storeCategories');
+Route::get('/sub-categories/{sub_category}', [\App\Http\Controllers\ProductController::class, 'subCategories'])->name('products.subCategories');
+Route::get('/titles/{title}', [\App\Http\Controllers\ProductController::class, 'titles'])->name('products.titles');
 
 
 

@@ -23,13 +23,13 @@
             </select>
         </div>
         <div class="col-lg-9 text-end">
-            {{ $products->links() }}
+            {{-- {{ $products->links() }} --}}
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3">
 
-            <ul class="category-list">
+            {{-- <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
                         class="category-list-link @if ($choosenStoreCategory === 'all')
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                 @endforeach
-            </ul>
+            </ul> --}}
         </div>
         @foreach ($products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 product-wrap-card pb-3">
@@ -69,24 +69,17 @@
                     {{ $product->sub_description }}
                 </div>
                 <div class="prodcut-sale-wrap text-center pt-2">
-                    @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
-                        <span class="me-3 product-cross-price">
-                            {{ number_format($product->old_price, 0, ',', ' ') }} Kč
-                        </span>
-                        <span class="product-sale-percent">
-                            -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
-                        </span>
-                        <div class="text-center pt-2 product-price">
-                            <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
-                        </div>
-                    @else
-                        <div class="text-center price-ws pt-2">
-                            <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong>
-                        </div>
-                    @endif
+                    <span class="me-3 product-cross-price">
+                        {{ number_format($product->old_price, 0, ',', ' ') }} Kč
+                    </span>
+                    <span class="product-sale-percent">
+                        -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
+                    </span>
                 </div>
 
-
+                <div class="text-center pt-2 product-price">
+                    <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
+                </div>
             </a>
         </div>
         @endforeach
@@ -94,7 +87,8 @@
     </div>
     <div class="row py-5">
         <div class="col-lg-12 text-end">
-            {{ $products->links() }}
+            {{-- {{ $products->links() }} --}}
         </div>
     </div>
 </div>
+

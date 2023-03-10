@@ -1,3 +1,8 @@
+body{
+    /* font-family: Avenir LT W85 Heavy,Avenir LT W01_85 Heavy1475544,Helvetica Neue,Helvetica,Arial,sans-serif; */
+    font-family: Avenir LT W45 Book,Avenir LT W01_45 Book1475508,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
 .product-wrap-card {
     position: relative;
 }
@@ -44,9 +49,20 @@
 }
 
 .product-price{
+    color: red;
+    font-weight: 600;
     font-size: 18px;
 }
 
+.product-sale-percent{
+    color: red;
+    font-weight: 600;
+}
+
+.price-ws{
+    font-weight: 600;
+    font-size: 18px;
+}
 
 .category-list{
     padding: 0;
@@ -58,6 +74,17 @@
     font-size: 18px;
 }
 
+.cleare-cart{
+    background: #818080;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.cleare-cart:hover{
+    background-color: black!important;
+    color: #fff!important;
+    transition: 0.3s;
+}
 /* .all-link{
     font-size: 18px;
 } */
@@ -81,6 +108,11 @@
     transition: 0.3s;
 }
 
+.category-list-link-active{
+    font-weight: 600;
+    color: black;
+}
+
 /* Pagination */
 
 .pagination{
@@ -88,6 +120,60 @@
     flex-wrap: wrap;
 }
 
+/* Show page */
+.carousel-wrap{
+    padding: 0 70px;
+}
+
+.description ul{
+    list-style: none;
+    padding: 0;
+}
+
+.description li{
+    padding: 5px 0;
+}
+
+.product-categories-links{
+    list-style: none;
+    padding: 0;
+}
+
+.product-categories-links li{
+    padding:5px 0;
+}
+
+.product-categories-links a{
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.product-categories-links a:hover{
+    color: #686868;
+    transition: 0.3s;
+}
+
+.show-old-price-cross{
+    color: #686868;
+    text-decoration: line-through;
+}
+
+.show-product-sale{
+    color: red;
+    font-weight: 600;
+}
+
+.show-price{
+    color: red;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.show-price-ws{
+    font-weight: 600;
+    font-size: 18px;
+}
 
 /* add to Cart */
 .add-to-cart{
@@ -126,20 +212,55 @@
 /* Cart */
 
 .order-summary-wrap{
+    width: 22%;
     position: fixed;
     text-align: center;
     padding: 50px;
-    background: antiquewhite;
+    background: #f2f2f2;
 }
 
-/* @media (max-width: 1399px){
-    .product-wrap-card:hover .product-image-card-additional {
+.link-to-pick-ticket{
+    text-decoration: none;
+    color: black;
+}
+
+.link-to-pick-ticket:hover{
+    color: #686868;
+    transition: 0.3s;
+}
+
+.savings{
+    font-size: 18px;
+}
+
+.order-link{
+    padding: 15px;
+    background-color: black;
+}
+
+.order-summary-bottom{
+    display: none;
+}
+
+.order-link-small a,
+.order-link a{
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width: 1399px){
+    /* .product-wrap-card:hover .product-image-card-additional {
         max-height: 320px;
+    } */
+
+    .order-summary-wrap{
+        width: 31%;
     }
 
 
 }
 
+/*
 @media (max-width: 1199px){
     .product-wrap-card:hover .product-image-card-additional {
         display: none;
@@ -153,6 +274,7 @@
     }
 
     .order-summary-bottom{
+        display: block;
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -160,5 +282,9 @@
         text-align: center;
         padding: 50px;
         background: antiquewhite;
+    }
+
+    .carousel-wrap{
+        padding: 0;
     }
 }
