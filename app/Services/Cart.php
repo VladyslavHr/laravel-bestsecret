@@ -102,6 +102,7 @@ class Cart extends ServiceProvider
 
     public static function addProduct($productId, $amount = 1)
     {
+        debug($productId, $amount);
         $cart = session('cart', []);
         if ($cart) {
 			if (isset($cart[$productId])) {

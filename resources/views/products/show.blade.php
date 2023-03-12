@@ -3,6 +3,10 @@
 @section('content')
 
 <div class="container">
+    <a href="{{ url()->previous() }}">
+        Back
+        <i class="bi bi-backspace-fill"></i>
+    </a>
     <div class="row">
         <div class="col-lg-7">
             <div class="carousel-wrap">

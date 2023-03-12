@@ -106,10 +106,12 @@
 </div>{{-- product-images-block --}}
 
   <script>
+
+Fancybox.defaults.Hash = false;
 // Initialise Carousel
 const mainCarousel = new Carousel(document.querySelector("#mainCarousel"), {
   Dots: false,
-			height   : 250,
+		height   : 250,
 });
 
 // Thumbnails

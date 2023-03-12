@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="row">
         @if (!$cart)
         <div class="py-5 text-center">

@@ -18,7 +18,7 @@ class AddToCartButton extends Component
     {
         $this->changeCount(0);
 
-        $cart = Cart::addProduct($this->product->id, $this->addToCartCount);
+        $cart = Cart::addProduct($this->product->id, 1);
 
         $this->productCartCount = $cart[$this->product->id];
 
