@@ -35,16 +35,33 @@
             <ul class="product-categories-links">
                 <li>
                     <a href="{{ route('products.titles', $product->title) }}">
-                        {{ $product->title }}</li>
+                        {{ $product->title }}
                     </a>
+                </li>
                 <li>
-                    <a href="{{ route('products.subCategories', $product->sub_category) }}">
-                        {{ $product->sub_category }}</li>
+                    @if ($product->category === 'women_accessoires')
+                    <a href="{{ route('forWomen.index') }}?store_category={{ $product->store_category }}&sub_category={{ $product->sub_category }}">
+                        {{ $product->sub_category }}
                     </a>
+                    @endif
+                    @if ($product->category === 'men_accessoires')
+                    <a href="{{ route('forMen.index') }}?store_category={{ $product->store_category }}&sub_category={{ $product->sub_category }}">
+                        {{ $product->sub_category }}
+                    </a>
+                    @endif
+                </li>
                 <li>
-                    <a href="{{ route('products.storeCategories', $product->store_category) }}">
-                        {{ $product->store_category }}</li>
+                    @if ($product->category === 'women_accessoires')
+                    <a href="{{ route('forWomen.index') }}?store_category={{ $product->store_category }}">
+                        {{ $product->store_category }}
                     </a>
+                    @endif
+                    @if ($product->category === 'men_accessoires')
+                    <a href="{{ route('forMen.index') }}?store_category={{ $product->store_category }}">
+                        {{ $product->sub_category }}
+                    </a>
+                    @endif
+                </li>
             </ul>
             <span>
                 <p>

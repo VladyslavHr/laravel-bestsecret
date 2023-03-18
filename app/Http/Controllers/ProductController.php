@@ -80,6 +80,8 @@ class ProductController extends Controller
     {
         $products = Product::where('sub_category', $sub_category)->get();
 
+
+
         return view('products.subCategories',[
             'products' => $products,
         ]);

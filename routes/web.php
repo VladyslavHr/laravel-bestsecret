@@ -37,6 +37,11 @@ Route::get('/store-categies/{store_category}', [\App\Http\Controllers\ProductCon
 Route::get('/sub-categories/{sub_category}', [\App\Http\Controllers\ProductController::class, 'subCategories'])->name('products.subCategories');
 Route::get('/titles/{title}', [\App\Http\Controllers\ProductController::class, 'titles'])->name('products.titles');
 
+// Brands
+Route::get('/designers', [\App\Http\Controllers\BrandController::class, 'index'])->name('brands.index');
+Route::get('/designers/{brand}', [\App\Http\Controllers\BrandController::class, 'show'])->name('brands.show');
+
+
 
 
 Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])->name('carts.index');

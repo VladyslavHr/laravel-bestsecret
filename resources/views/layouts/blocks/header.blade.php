@@ -9,6 +9,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 <a class="nav-link" href="{{ route('forWomen.index') }}">For Women</a>
                 <a class="nav-link" href="{{ route('forMen.index') }}">For Men</a>
+                <a class="nav-link" href="{{ route('brands.index') }}">Designers</a>
                 <a class="nav-link" href="{{ route('carts.index') }}">Cart</a>
                 <a class="nav-link" href="#">Contact</a>
                 <a class="nav-link" href="#">Returns</a>

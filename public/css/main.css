@@ -91,7 +91,7 @@ body{
 
 .category-list-element:hover,
 .category-item:hover{
-    background-color: #686868;
+    /* background-color: #686868; */
 }
 
 .category-list-link{
@@ -104,8 +104,8 @@ body{
 }
 
 .category-list-link:hover{
-    color: #fff;
-    transition: 0.3s;
+    /* color: #fff; */
+    /* transition: 0.3s; */
 }
 
 .category-list-link-active{

@@ -23,12 +23,11 @@
             </select>
         </div>
         <div class="col-lg-9 text-end">
-            {{ $products->links() }}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3">
-
             <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
@@ -85,16 +84,13 @@
                         </div>
                     @endif
                 </div>
-
-
             </a>
         </div>
         @endforeach
-
     </div>
     <div class="row py-5">
         <div class="col-lg-12 text-end">
-            {{ $products->links() }}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
 </div>

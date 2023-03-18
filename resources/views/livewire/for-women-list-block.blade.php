@@ -23,11 +23,19 @@
             </select>
         </div>
         <div class="col-lg-9 text-end">
-            {{ $products->links() }}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                  Link with href
+                </a>
+              <div class="collapse" id="collapseExample2">
+                <div class="card card-body">
+                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
             <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
@@ -41,24 +49,37 @@
                         @endif
                     </a>
                 </li>
-                @foreach ($store_categories as $category)
+                @foreach ($categoriesSorted as $category => $subCategories)
                     {{-- @if (count($category->products)) --}}
                     <li class="category-list-element">
-                        <a
-                            class="category-list-link @if ($category == $choosenStoreCategory) category-list-link-active @endif"
+                        <a  class="category-list-link @if ($category == $choosenStoreCategory) category-list-link-active @endif"
                             wire:click.prevent="changeCategory('{{ $category }}')"
-                            data-bs-toggle="collapse" href="#collapseExample{{$category}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            data-bs-toggle="collapse"
+                            href="#collapseCategory_{{$category}}"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapseCategory_{{$category}}"
+                            >
                             {{$category}}
                             @if ($category == $choosenStoreCategory)
                                 <i class="bi bi-check-lg"></i>
                             @endif
                         </a>
-                        <a class="collapse" id="collapseExample{{$category}}">
-                            {{-- <div class="card card-body"> --}}
-                                subCategory
-                              {{-- Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger. --}}
-                            {{-- </div> --}}
-                        </a>
+                        <ul class="ps-5" >
+                            @foreach ($subCategories as $subCategory)
+                            <li class="collapse" id="collapseCategory_{{$category}}">
+                                <a wire:click.prevent="changeSubCategory('{{ $subCategory }}')" href="#">
+                                    {{ $subCategory }}
+                                </a>
+                                @if ($subCategory == $choosenSubCategory)
+                                <i class="bi bi-check-lg"></i>
+                                @endif
+                            </li>
+                            @endforeach
+                        </ul>
+                        {{-- <a class="collapse" id="collapseExample">
+                            subCategory
+                        </a> --}}
                     </li>
                     {{-- @endif --}}
                 @endforeach
@@ -101,7 +122,7 @@
     </div>
     <div class="row py-5">
         <div class="col-lg-12 text-end">
-            {{ $products->links() }}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
 </div>

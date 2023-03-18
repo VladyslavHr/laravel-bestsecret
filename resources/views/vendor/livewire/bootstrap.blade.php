@@ -36,7 +36,7 @@
                                 <li class="page-item" wire:key="paginator-{{ $paginator->getPageName() }}-{{ $this->numberOfPaginatorsRendered[$paginator->getPageName()] }}-page-{{ $page }}"><button type="button" class="page-link" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')">{{ $page }}</button></li>
                             @endif
 
-                        {{-- @endif --}}
+                            {{-- @endif --}}
 
                         @endforeach
                     @endif
