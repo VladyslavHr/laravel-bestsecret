@@ -28,14 +28,6 @@
     </div>
     <div class="row">
         <div class="col-lg-3">
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
-                  Link with href
-                </a>
-              <div class="collapse" id="collapseExample2">
-                <div class="card card-body">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-              </div>
             <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
