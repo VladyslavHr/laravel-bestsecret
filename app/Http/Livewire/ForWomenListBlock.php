@@ -99,13 +99,13 @@ class ForWomenListBlock extends Component
 
         $products = Product::where('category', 'women_accessoires')->where('store_category', '!=', ' ');
 
-
-
         if ($this->choosenStoreCategory !== 'all') {
             $products->where('store_category', $this->choosenStoreCategory);
         }
 
-
+        if ($this->choosenSubCategory) {
+            $products->where('sub_category', $this->choosenSubCategory);
+        }
 
         debug($this->choosenStoreCategory);
 

@@ -104,13 +104,23 @@ body{
 }
 
 .category-list-link:hover{
-    /* color: #fff; */
-    /* transition: 0.3s; */
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.sub-categories-list{
+    display: none;
 }
 
 .category-list-link-active{
     font-weight: 600;
     color: black;
+}
+
+/* .active>.page-link */
+.category-list-link-active ~ .sub-categories-list {
+    display: block;
 }
 
 /* Pagination */
@@ -246,6 +256,43 @@ body{
 .order-link a{
     color: #fff;
     text-decoration: none;
+}
+
+
+/* OWL Carousel */
+.home-demo .item {
+    /* background: #ff3f4d; */
+    padding: 0 100px 0 0;
+}
+.home-demo h2 {
+    color: #FFF;
+    text-align: center;
+    padding: 5rem 0;
+    margin: 0;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.owl-next{
+    position: absolute;
+    top: 20%;
+    left: 101%;
+    /* font-size: 60px; */
+}
+
+.owl-next span{
+    font-size: 60px;
+}
+
+.owl-prev{
+    position: absolute;
+    top: 20%;
+    /* font-size: 60px; */
+    right: 101%;
+}
+
+.owl-prev span{
+    font-size: 60px;
 }
 
 @media (max-width: 1399px){

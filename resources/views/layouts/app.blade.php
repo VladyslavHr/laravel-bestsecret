@@ -10,8 +10,9 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/bootstrap-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset ('css/main.css?v=' . filemtime(public_path('css/main.css')) ) }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset ('css/main.css?v=' . filemtime(public_path('css/main.css')) ) }}">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
     <title>Document</title>
@@ -30,7 +31,11 @@
 
     <!-- JavaScript Bundle with Popper -->
     <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+
     @livewireScripts
+
     <script src="{{ asset ('js/main.js?v=' . filemtime(public_path('js/main.js')) ) }}"></script>
 
 

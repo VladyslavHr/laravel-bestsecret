@@ -59,11 +59,38 @@ class ProductController extends Controller
         $color_string = implode(' ', $color);
         // dd($color_string);
 
+
+
+        $codeExploded = explode('-', $code);
+
+        $codeFirst = (int)$codeExploded[0];
+
+        $similarProducts = Product::where('code', $codeFirst)->get();
+
+        $color_string_similar = [];
+        foreach ($similarProducts as $product) {
+            $colorSimilar = explode(',', $product->color);
+            // dd($similarProducts);
+
+            $colorSimilar = explode(' ', $colorSimilar[1]);
+
+            $color_separate_similar = array_shift($colorSimilar);
+
+            $color_string_similar = implode(' ', $colorSimilar);
+
+        }
+
+
+
+
+
         return view('products.show',[
             'product' => $product,
             'images' => $images,
             'size' => $size,
             'color_string' => $color_string,
+            'similarProducts' => $similarProducts,
+            'color_string_similar' => $color_string_similar,
         ]);
     }
 

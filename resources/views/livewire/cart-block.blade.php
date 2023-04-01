@@ -36,11 +36,18 @@
                                 {{$product->sub_category}}
                             </div>
                         </div>
-                        <div class="col-lg-1">
+                        {{-- <div class="col-lg-1">
                             {{$product->size}}
-                        </div>
+                        </div> --}}
                         <div class="col-lg-3">
-                            <div class="col-lg-2 d-flex" style="width: 100%">
+                            <select name="size" id="size_select" class="form-select">
+                                {{-- @foreach ($size as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <div class=" d-flex" style="width: 100%">
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{$product->id}}, 'amount', -1)">-</button>
                                 <span class="cart-product-count">{{ $productCount }}</span>
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{$product->id}}, 'amount', 1)">+</button>

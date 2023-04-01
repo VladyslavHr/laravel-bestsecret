@@ -42,7 +42,7 @@ class CartBlock extends Component
 
         $this->productCount = (int)$this->productCount;
 
-        $this->productCount += $action;
+        $this->productCount += (int)$action;
 
         if ($this->productCount < 0) {
             $this->productCount = 0;

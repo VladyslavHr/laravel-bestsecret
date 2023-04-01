@@ -12,6 +12,11 @@
             <div class="carousel-wrap">
                 @include('components.fancybox')
             </div>
+            <div class="other-colors pt-3">
+                {{-- {{ $similarProducts-> }} --}}
+
+
+            </div>
         </div>
         <div class="col-lg-5">
             <h3>{{ $product->title }}</h3>
@@ -88,12 +93,35 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-
+    <div class="row py-5">
+        <div class="home-demo">
+            <h3 class="pb-2">Other colors you may like</h3>
+            <div class="owl-carousel owl-theme">
+                @foreach ($similarProducts as $product)
+                <div class="item">
+                    <a href="{{ route('products.show', $product->code) }}" class="product-link">
+                        <img src="{{ $product->image_default }}" class="" alt="">
+                        <h3>{{ $color_string_similar }}</h3>
+                    </a>
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
 </div>
+
+<script>
+    $(function() {
+  // Owl Carousel
+  var owl = $(".owl-carousel");
+  owl.owlCarousel({
+    items: 4,
+    margin: 10,
+    loop: true,
+    nav: true
+  });
+});
+</script>
 @endsection
 

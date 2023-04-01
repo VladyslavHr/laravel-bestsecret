@@ -12,12 +12,16 @@ class BrandShow extends Component
     public $paginationTheme = 'bootstrap';
 
     public $brand;
+    public $productBrands;
+    public $category;
+    public $categories;
     public $choosenStoreCategory = 'all';
     public $choosenSubCategory = null;
     public $sortingSelectValue = null;
     public $sortingBy = 'title';
     public $sortingDirection = 'asc';
     public $queryParams = [];
+
 
     public function updatedSortingSelectValue()
     {
@@ -43,7 +47,19 @@ class BrandShow extends Component
 
         $this->setQueryParams(['sub_category' => $subCategory]);
 
-        debug($subCategory);
+        // debug($subCategory);
+    }
+
+    public function setQueryParams($params = [])
+    {
+        $this->queryParams = array_merge($this->queryParams, $params);
+
+        $queryString = '?' . http_build_query($this->queryParams);
+
+        $this->emit('urlChange', $queryString);
+
+        $this->resetPage();
+
     }
 
     public function mount()
@@ -66,8 +82,17 @@ class BrandShow extends Component
     public function render()
     {
 
+        // $this->brand = Product::where('title', $brand)->get();
+        $title = [];
+        foreach ($this->brand as $brand) {
+            $title[] = $brand->title;
+        }
+        // debug($title);
+
+
         $categories = Product::select('store_category', 'sub_category')
         // ->where('category', 'women_accessoires')
+        ->where('title', $title)
         ->where('store_category', '!=', ' ')
         // ->where('store_category', '!=', '#TRENDS')
         // ->where('store_category', '!=', 'Ski & snowboard')
@@ -84,17 +109,23 @@ class BrandShow extends Component
 
         }
 
-        // $products = Product::where('category', 'women_accessoires')->where('store_category', '!=', ' ');
+        $productBrands = Product::where('title', $title)->where('store_category', '!=', ' ')->get();
 
         if ($this->choosenStoreCategory !== 'all') {
-            $this->brand->where('store_category', $this->choosenStoreCategory);
+            $productBrands->where('store_category', $this->choosenStoreCategory);
         }
 
-
+        if ($this->choosenSubCategory) {
+            // $products->where('sub_category', $this->choosenSubCategory);
+            $productBrands->where('sub_category', $this->choosenSubCategory);
+        }
 
         debug($this->choosenStoreCategory);
+        debug($this->choosenSubCategory);
 
         return view('livewire.brand-show',[
+            // 'products' => $products,
+            'productBrands' => $productBrands,
             'categoriesSorted' => $categoriesSorted,
 
         ]);

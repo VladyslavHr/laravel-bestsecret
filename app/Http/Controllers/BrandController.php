@@ -12,6 +12,8 @@ class BrandController extends Controller
         $brands = Product::where('title', '!=', ' ')
         ->distinct('title')->orderBy('title', 'asc')->pluck('title');
 
+
+
         // dd($brands);
         return view('brands.index',[
             'brands' => $brands,

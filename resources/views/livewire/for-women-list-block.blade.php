@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-lg-3">
-            <ul class="category-list">
+            <ul class="category-list" >
                 <li class="category-item">
                     <a href="#"
                         class="category-list-link all-link @if ($choosenStoreCategory === 'all')
@@ -43,24 +43,25 @@
                 </li>
                 @foreach ($categoriesSorted as $category => $subCategories)
                     {{-- @if (count($category->products)) --}}
-                    <li class="category-list-element">
+                    <li class="category-list-element" >
                         <a  class="category-list-link @if ($category == $choosenStoreCategory) category-list-link-active @endif"
                             wire:click.prevent="changeCategory('{{ $category }}')"
-                            data-bs-toggle="collapse"
-                            href="#collapseCategory_{{$category}}"
+                            {{-- data-bs-toggle="collapse" --}}
+                            {{-- href="#collapseCategory_{{str_replace([' ','&'], '', $category)}}" --}}
                             role="button"
                             aria-expanded="false"
-                            aria-controls="collapseCategory_{{$category}}"
+                            {{-- aria-controls="collapseCategory_{{$category}}" --}}
                             >
                             {{$category}}
                             @if ($category == $choosenStoreCategory)
                                 <i class="bi bi-check-lg"></i>
                             @endif
                         </a>
-                        <ul class="ps-5" >
+                        <ul class="ps-5 sub-categories-list">
                             @foreach ($subCategories as $subCategory)
-                            <li class="collapse" id="collapseCategory_{{$category}}">
-                                <a wire:click.prevent="changeSubCategory('{{ $subCategory }}')" href="#">
+                            <li >
+                                {{-- class="collapse sub_categories_list" id="collapseCategory_{{str_replace([' ','&'], '', $category)}}" --}}
+                                <a  wire:click.prevent="changeSubCategory('{{ $subCategory }}')" href="#">
                                     {{ $subCategory }}
                                 </a>
                                 @if ($subCategory == $choosenSubCategory)
