@@ -23,13 +23,13 @@
             <div>{{ $product->sub_category }}</div>
             <div>Color: {{ $color_string }}</div>
 
-            @if ($product->sale > 5)
+            @if ($product->new_sale > 5)
             <div class="price-and-sale">
                 <span class="show-old-price-cross me-3">{{ number_format($product->old_price, 0, ',', ' ') }} CZK</span>
-                <span class="show-product-sale">-{{ number_format($product->sale) }} %</span>
+                <span class="show-product-sale">-{{ number_format($product->new_sale) }} %</span>
             </div>
             <div class="show-price">
-                {{ number_format($product->price, 0, ',', ' ')  }} CZK
+                {{ number_format($product->marged_price, 0, ',', ' ')  }} CZK
             </div>
             @else
             <div class="show-price-ws py-3">
@@ -80,13 +80,7 @@
                 item number: {{ $product->code }}
             </span>
 
-            <select name="size" id="size_select" class="form-select my-3">
-                @foreach ($size as $item)
-                    <option value="{{ $item }}">{{ $item }}</option>
-                @endforeach
-            </select>
-
-            @livewire('add-to-cart-button', ['product' => $product])
+            @livewire('add-to-cart-button', ['product' => $product, 'sizes' => $sizes])
 
             <div class="description pt-3">
                 {!! $product->description !!}

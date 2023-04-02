@@ -12,10 +12,18 @@ class AddToCartButton extends Component
     // public $product_count = [];
     public $addToCartCount = 1;
     public $product;
+    public $sizes;
+    public $choosenSize = 'choose';
     public bool $showCartLink = false;
+    public $sizesSelectClass = '';
 
     public function addToCart(): void
     {
+        if ($this->choosenSize === 'choose') {
+            $this->sizesSelectClass = 'is-invalid';
+            return;
+        }
+
         $this->changeCount(0);
 
         $cart = Cart::addProduct($this->product->id, 1);
@@ -28,6 +36,13 @@ class AddToCartButton extends Component
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
 
+    }
+
+    public function updatedChoosenSize($value)
+    {
+        if ($value !== 'choose') {
+            $this->sizesSelectClass = '';
+        }
     }
 
     public function changeCount($action)
@@ -54,6 +69,7 @@ class AddToCartButton extends Component
 
     public function render()
     {
+        debug($this->choosenSize);
         return view('livewire.add-to-cart-button');
     }
 }

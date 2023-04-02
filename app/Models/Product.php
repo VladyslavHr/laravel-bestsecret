@@ -36,4 +36,14 @@ class Product extends Model
     public function gallery() {
         return $this->hasMany(ProductGallery::class)->orderByDesc('created_at');
     }
+
+    public function getMargedPriceAttribute()
+    {
+        return $this->price *1.3;
+    }
+
+    public function getNewSaleAttribute()
+    {
+        return $this->new_sale = 100 - (($this->marged_price / $this->old_price) * 100);
+    }
 }

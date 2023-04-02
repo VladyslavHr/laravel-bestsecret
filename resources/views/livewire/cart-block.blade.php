@@ -20,10 +20,10 @@
                             <img style="width: 100%" src="{{ $product->image_default }}" alt="">
                         </a>
                         <div class="col-lg-3">
-                            @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
+                            @if (number_format($product->new_sale > 5))
                             <div class="pt-3">
                                 <span class="product-sale-percent">
-                                    -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
+                                    -{{ number_format($product->new_sale) }} %
                                 </span>
                             </div>
                             @endif
@@ -54,14 +54,14 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
+                            @if ($product->new_sale > 5)
                             <div class="text-center ">
                                 <span class="product-cross-price">
                                     {{ number_format($product->old_price, 0, ',', ' ') }} Kč
                                 </span>
                             </div>
                             <div class="text-center pt-2 product-price">
-                                <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
+                                <strong>{{ number_format($product->marge_price, 0, ',', ' ') }} Kč</strong>
                             </div>
                             @else
                             <div class="text-center price-ws pt-3">

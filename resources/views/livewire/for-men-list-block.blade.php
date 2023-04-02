@@ -91,15 +91,15 @@
                     {{ $product->sub_description }}
                 </div>
                 <div class="prodcut-sale-wrap text-center pt-2">
-                    @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
+                    @if ($product->new_sale > 5)
                         <span class="me-3 product-cross-price">
                             {{ number_format($product->old_price, 0, ',', ' ') }} Kč
                         </span>
                         <span class="product-sale-percent">
-                            -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
+                            -{{ number_format($product->new_sale) }} %
                         </span>
                         <div class="text-center pt-2 product-price">
-                            <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
+                            <strong>{{ number_format($product->marged_price, 0, ',', ' ') }} Kč</strong>
                         </div>
                     @else
                         <div class="text-center price-ws pt-2">

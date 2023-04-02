@@ -9,7 +9,7 @@
             </select>
         </div>
         <div class="col-lg-9 text-end">
-            {{-- {{ $products->onEachSide(1)->links() }} --}}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
     <div class="row">
@@ -65,7 +65,7 @@
             </ul>
         </div>
 
-        @foreach ($brand as $product)
+        @foreach ($products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 product-wrap-card pb-3">
             <a href="{{ route('products.show', $product->code) }}" class="product-link">
                 <img src="{{ $product->image_default }}" class="product-image-card" alt="">
@@ -78,15 +78,15 @@
                     {{ $product->sub_description }}
                 </div>
                 <div class="prodcut-sale-wrap text-center pt-2">
-                    @if (number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) > 5)
+                    @if ($product->new_sale > 5)
                         <span class="me-3 product-cross-price">
                             {{ number_format($product->old_price, 0, ',', ' ') }} Kč
                         </span>
                         <span class="product-sale-percent">
-                            -{{ number_format(100 - (((($product->price * 0.30) + $product->price) / $product->old_price) * 100)) }} %
+                            -{{ number_format($product->new_sale) }} %
                         </span>
                         <div class="text-center pt-2 product-price">
-                            <strong>{{ number_format(($product->price * 0.30) + $product->price, 0, ',', ' ') }} Kč</strong>
+                            <strong>{{ number_format($product->marged_price, 0, ',', ' ') }} Kč</strong>
                         </div>
                     @else
                         <div class="text-center price-ws pt-2">
@@ -101,7 +101,7 @@
     </div>
     <div class="row py-5">
         <div class="col-lg-12 text-end">
-            {{-- {{ $products->onEachSide(1)->links() }} --}}
+            {{ $products->onEachSide(1)->links() }}
         </div>
     </div>
 </div>

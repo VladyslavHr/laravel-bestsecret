@@ -44,11 +44,14 @@ class ProductController extends Controller
             $images[] = str_replace('68x84', '620x757', $image->image);
         }
 
-        $product->price = ($product->price * 0.30) + $product->price;
+        // $product->price = ($product->price * 0.30) + $product->price;
+        // $product->price *= 1.3;
 
         $product->sale = 100 - (($product->price / $product->old_price) * 100);
 
-        $size = explode(',', $product->size);
+        $size = str_replace('Select your size,', '', $product->size);
+
+        $sizes = explode(',', $size);
 
         $color = explode(',', $product->color);
 
@@ -80,14 +83,10 @@ class ProductController extends Controller
 
         }
 
-
-
-
-
         return view('products.show',[
             'product' => $product,
             'images' => $images,
-            'size' => $size,
+            'sizes' => $sizes,
             'color_string' => $color_string,
             'similarProducts' => $similarProducts,
             'color_string_similar' => $color_string_similar,
