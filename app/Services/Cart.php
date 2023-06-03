@@ -14,7 +14,7 @@ class Cart extends ServiceProvider
     {
         $cart = session('cart', []);
 
-        return $cart[$productId] ?? null;
+        return $cart[$productId]['amount'] ?? null;
     }
 
     public static function getProducts()
@@ -24,10 +24,10 @@ class Cart extends ServiceProvider
         ->get(['id', 'code', 'title', 'price', 'old_price', 'sale', 'sub_category', 'amount', 'image_default']);
 
         foreach ($products as $product) {
-            $product->old_sum =  $product->old_price * $cart[$product->id];
-            $product->sum = (($product->price * 0.30) + $product->price) * $cart[$product->id];
-            $product->sum_formated = number_format($product->price * $cart[$product->id], 2);
-            $product->cart_amount = $cart[$product->id];
+            $product->old_sum =  $product->old_price * $cart[$product->id]['amount'];
+            $product->sum = ($product->marged_price + $product->price) * $cart[$product->id]['amount'];
+            $product->sum_formated = number_format($product->price * $cart[$product->id]['amount'], 2);
+            $product->cart_amount = $cart[$product->id]['amount'];
         }
 
         self::$products = $products;
@@ -100,21 +100,35 @@ class Cart extends ServiceProvider
         return $deliverySum;
     }
 
-    public static function addProduct($productId, $amount = 1)
+    public static function addProduct($productId, $amount = 1, $size = null)
     {
-        debug($productId, $amount);
+        debug($productId, $amount, $size);
         $cart = session('cart', []);
+        // Корзина была не пустая
         if ($cart) {
+            debug('IF1 Корзина была не пустая');
 			if (isset($cart[$productId])) {
-				$cart[$productId] += $amount;
+                // этот товар уже есть в корзине
+                debug('IF2');
+				$cart[$productId] = [
+                    'amount' => self::getProductCount($productId) + $amount,
+                    'size' =>  $size,
+                ];
 			}else{
-                if ($amount == null) {
-                    $amount = 1;
-                }
-				$cart[$productId] = $amount;
+                debug('Else2');
+                // Этого товара еще нет в корзине
+				$cart[$productId] = [
+                    'amount' => $amount,
+                    'size' =>  $size,
+                ];
 			}
 		}else{
-			$cart = [$productId => $amount];
+            // Корзина была пустая
+            debug('ELSE1 Корзина была пустая');
+			$cart = [$productId => [
+                'amount' => $amount,
+                'size' =>  $size,
+            ]];
 		}
         session(['cart' => $cart]);
         return $cart;
@@ -124,7 +138,7 @@ class Cart extends ServiceProvider
     {
         $cart = session('cart', []);
 
-		$cart[$productId] = $amount;
+		$cart[$productId]['amount'] = $amount;
 
         session(['cart' => $cart]);
 
@@ -149,7 +163,7 @@ class Cart extends ServiceProvider
 
         $price = Product::findOrFail($productId)->price;
 
-        return $cart_arr[$productId] * $price;
+        return $cart_arr[$productId]['amount'] * $price;
     }
 
 
@@ -164,8 +178,8 @@ class Cart extends ServiceProvider
 
         $total = 0;
 
-        foreach ($cart as $count) {
-            $total += $count;
+        foreach ($cart as $cartItem) {
+            $total += $cartItem['amount'];
         }
 
         return $total;

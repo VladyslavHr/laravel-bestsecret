@@ -19,12 +19,11 @@ class CartBlock extends Component
 
     public function render()
     {
-        $this->cart = session('cart', []);
-        $this->products = Product::whereIn('id', array_keys($this->cart))
-        ->get(['id', 'code', 'title', 'price', 'old_price', 'sale', 'sub_category', 'amount', 'image_default']);
+        // $this->cart = session('cart', []);
+
         // debug($this->products);
         // debug($this->cart);
-
+        $this->products = Cart::getProducts();
         $this->totalPrice = Cart::getTotalSum();
         $this->savingMoney = Cart::getSavingMoney();
         $this->oldTotalPrice = Cart::getOldSum();
@@ -55,11 +54,8 @@ class CartBlock extends Component
 
     public function removeItem($id)
     {
-        $this->cart = session('cart', []);
 
-        unset($this->cart[$id]);
-
-        session(['cart' => $this->cart]);
+        Cart::removeProduct($id);
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
     }

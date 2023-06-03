@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        @if (!$cart)
+        @if (Cart::isEmpty())
         <div class="py-5 text-center">
             <h1 class="pb-5">Your cart is empty, got the shop to full your cart.</h1>
             <a class="link-to-pick-ticket fs-4" href="{{ route('home.index') }}">
@@ -61,7 +61,7 @@
                                 </span>
                             </div>
                             <div class="text-center pt-2 product-price">
-                                <strong>{{ number_format($product->marge_price, 0, ',', ' ') }} Kč</strong>
+                                <strong>{{ number_format($product->marged_price, 0, ',', ' ') }} Kč</strong>
                             </div>
                             @else
                             <div class="text-center price-ws pt-3">
