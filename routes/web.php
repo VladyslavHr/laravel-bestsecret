@@ -41,7 +41,7 @@ Route::get('/titles/{title}', [\App\Http\Controllers\ProductController::class, '
 Route::get('/designers', [\App\Http\Controllers\BrandController::class, 'index'])->name('brands.index');
 Route::get('/designers/{brand}', [\App\Http\Controllers\BrandController::class, 'show'])->name('brands.show');
 
-
+Route::post('sizeChart', [App\Http\Controllers\ProductController::class, 'sizeChart']);
 
 
 Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])->name('carts.index');

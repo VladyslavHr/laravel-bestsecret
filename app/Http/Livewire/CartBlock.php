@@ -19,11 +19,12 @@ class CartBlock extends Component
 
     public function render()
     {
-        // $this->cart = session('cart', []);
-
-        // debug($this->products);
-        // debug($this->cart);
-        $this->products = Cart::getProducts();
+        // Необходимо обновить $this->products и добавить $this->productCount для каждого продукта
+        $this->products = Cart::getProducts()->map(function ($product) {
+            $product->productCount = $this->productCount;
+            // return $product;
+        });
+        // $this->products = Cart::getProducts();
         $this->totalPrice = Cart::getTotalSum();
         $this->savingMoney = Cart::getSavingMoney();
         $this->oldTotalPrice = Cart::getOldSum();
@@ -32,29 +33,44 @@ class CartBlock extends Component
         return view('livewire.cart-block');
     }
 
-    public function changeCount($id, $action)
+    public function changeCount($productId, $key, $action)
     {
+        $cart = session('cart', []);
 
-        // $this->product = Product::where('id', $id);
-
-        // debug($this->product);
-
-        $this->productCount = (int)$this->productCount;
-
-        $this->productCount += (int)$action;
-
-        if ($this->productCount < 0) {
-            $this->productCount = 0;
+        if (!isset($cart[$productId][$key])) {
+            $cart[$productId][$key] = [];
         }
 
-        // if ($this->productCount >= $this->product->amount) {
-        //     $this->productCount = $this->product->amount;
-        // }
+        if (!is_array($cart[$productId][$key])) {
+            $cart[$productId][$key] = ['productCount' => $cart[$productId][$key]];
+        }
+
+        if (isset($cart[$productId][$key]['productCount'])) {
+            $productCount = $cart[$productId][$key]['productCount'];
+        } else {
+            $productCount = 0;
+        }
+
+        $newCount = $productCount + (int) $action;
+
+        if ($newCount < 0) {
+            $newCount = 0;
+        }
+
+        // Получите максимальное количество продукта из базы данных
+        $product = Product::find($productId);
+        $maxCount = $product->amount ?? 1; // Учесть значение null и считать его как 1
+
+        if ($newCount > $maxCount) {
+            $newCount = $maxCount;
+        }
+
+        $cart[$productId][$key]['productCount'] = $newCount;
+        session(['cart' => $cart]);
     }
 
     public function removeItem($id)
     {
-
         Cart::removeProduct($id);
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());

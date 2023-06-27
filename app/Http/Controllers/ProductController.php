@@ -69,6 +69,7 @@ class ProductController extends Controller
         $codeFirst = (int)$codeExploded[0];
 
         $similarProducts = Product::where('code', $codeFirst)->get();
+        // dd($similarProducts);
 
         $color_string_similar = [];
         foreach ($similarProducts as $product) {
@@ -120,5 +121,18 @@ class ProductController extends Controller
         return view('products.titles',[
             'products' => $products,
         ]);
+    }
+
+
+    public function sizeChart() {
+
+
+
+
+
+        return [
+            'status' => 'ok',
+            'chart_size_view' => view('products.blocks.chartSizeResult')->render(),
+        ];
     }
 }

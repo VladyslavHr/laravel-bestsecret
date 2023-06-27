@@ -20,5 +20,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+
+        $this->call([
+            ChartSizeGenderSeeder::class,
+            ChartSizeCategorySeeder::class,
+            ChartSizeDefenitionSeeder::class,
+            ChartSizeGuideSeeder::class,
+            ChartSizeSeeder::class,
+        ]);
     }
 }

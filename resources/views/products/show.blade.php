@@ -82,6 +82,11 @@
 
             @livewire('add-to-cart-button', ['product' => $product, 'sizes' => $sizes])
 
+                <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                CHART SIZE
+            </button>
+
             <div class="description pt-3">
                 {!! $product->description !!}
             </div>
@@ -102,6 +107,46 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">CHART SIZE</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="select-wrap">
+                    <div class="gender-select pt-3">
+                        <select class="form-select" id="gender_select" onchange="chart_select()">
+                            <option value="women">Women</option>
+                            <option value="men">Men</option>
+                        </select>
+                    </div>
+                    <div class="category-select pt-3">
+                        <select class="form-select" id="category_select" onchange="chart_select()">
+                            <option value="belts">Belts</option>
+                            <option value="rings">Rings</option>
+                            <option value="hats">Hats/Caps</option>
+                            <option value="gloves">Gloves</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-size" id="chart_size_result">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
 
 </div>
 

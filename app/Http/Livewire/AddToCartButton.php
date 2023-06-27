@@ -3,12 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{Product};
+use App\Models\Product;
 use App\Services\Cart;
 
 class AddToCartButton extends Component
 {
-      // public ?int $productCartCount;
+    // public ?int $productCartCount;
     // public $product_count = [];
     public $addToCartCount = 1;
     public $product;
@@ -32,10 +32,9 @@ class AddToCartButton extends Component
 
         $this->showCartLink = $this->productCartCount > 0;
 
-        // Cart::getTotalCount()
-
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
 
+        $this->reset($this->productCartCount);
     }
 
     public function updatedChoosenSize($value)
@@ -72,4 +71,5 @@ class AddToCartButton extends Component
         debug($this->choosenSize);
         return view('livewire.add-to-cart-button');
     }
+
 }
