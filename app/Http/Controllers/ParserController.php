@@ -20,7 +20,9 @@ class ParserController extends Controller
 
         $code = explode('-', $product->code)[0];
 
-        $url = "https://www.bestsecret.com/product.htm?code=$code";
+        $codeColor = explode('-', $product->code)[1];
+
+        $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
 
         return [
             'status' => 'ok',

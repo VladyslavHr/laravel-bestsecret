@@ -18,7 +18,7 @@
         @if ($showCartLink)
             <a href="{{ route('carts.index') }}" class="btn product-show-link-to-card" >
                 CART
-                <span class="cart-count-porduct">{{ Cart::getProductCount($product->code) ?? '' }}</span>
+                <span class="cart-count-porduct">{{ Cart::getTotalCount() }}</span>
             </a>
         @endif
     </div>

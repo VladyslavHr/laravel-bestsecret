@@ -30,11 +30,12 @@ class AddToCartButton extends Component
 
         $this->productCartCount = Cart::getProductCount($this->product->id);
 
+        // debug($this->productCartCount);
         $this->showCartLink = $this->productCartCount > 0;
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
 
-        $this->reset($this->productCartCount);
+        // $this->reset($this->productCartCount);
     }
 
     public function updatedChoosenSize($value)

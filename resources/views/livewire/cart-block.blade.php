@@ -55,7 +55,7 @@
 
                             <div class="d-flex" style="width: 100%">
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->size }}', -1)">-</button>
-                                <span class="cart-product-count">{{ $product->productCount }}</span>
+                                <span class="cart-product-count">{{ $product->cart_amount }}</span>
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->size }}', 1)">+</button>
                             </div>
                         </div>
