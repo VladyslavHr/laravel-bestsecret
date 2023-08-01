@@ -1,4 +1,5 @@
 var log = console.log
+initializeForm();
 
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel();
@@ -15,18 +16,47 @@ $(document).on('click', '.pagination .page-item', function (e) {
 
 
 
+
+// // Add event listeners for the checkboxes
+// $("#firm_buy").change(chooseFirm);
+// $("#bill_equal_address").change(chooseEqualAddress);
+
+
+// var firmBuyOldValue = $("#firm_buy").is(":checked");
+// var billEqualAddressOldValue = $("#bill_equal_address").is(":checked");
+
+// if (firmBuyOldValue) {
+//     $(".firm-show-js").show();
+//     $(".identification-num-show-js").show();
+// }else{
+//     $(".firm-show-js").hide();
+//     $(".identification-num-show-js").hide();
+// }
+
+// if (billEqualAddressOldValue) {
+//     $("#billing_address_js").hide();
+
+// }else{
+//     $("#billing_address_js").show();
+// }
+
+
+
 function chart_select() {
 
     var select_gender = $('#gender_select')
     var select_category = $('#category_select')
+    var product_code = $('#product_code_val')
 
     var gender = select_gender.val()
     var category = select_category.val()
+    var product = product_code.val()
 
-    $.post('/sizeChart',
+    $.post('/sizeChart/' + product,
     {
         gender: gender,
         category: category,
+        product:product,
         type: 'general',
         _token: $('meta[name="csrf-token"]').attr('content'),
     }, function function_name(data) {
@@ -41,6 +71,51 @@ function chart_select() {
         }
     }, 'json')
 }
+
+function choose_firm()
+{
+    if ($('#firm_buy').is(":checked")) {
+        $(".firm-show-js").fadeIn();
+        $(".identification-num-show-js").fadeIn();
+    }else{
+        $(".firm-show-js").hide();
+        $(".identification-num-show-js").hide();
+    }
+}
+
+function choose_equal_address()
+{
+    if ($('#bill_equal_address').is(":checked")) {
+        $("#billing_address_js").hide();
+    }else{
+        $("#billing_address_js").fadeIn();
+    }
+}
+
+
+function initializeForm() {
+    // Get the initial values of the checkboxes
+    var firmBuyOldValue = $("#firm_buy").is(":checked");
+    var billEqualAddressOldValue = $("#bill_equal_address").is(":checked");
+
+    // console.log(billEqualAddressOldValue)
+
+    // Initialize form elements based on old values
+    if (firmBuyOldValue) {
+        $(".firm-show-js").show();
+        $(".identification-num-show-js").show();
+    } else {
+        $(".firm-show-js").hide();
+        $(".identification-num-show-js").hide();
+    }
+
+    if (billEqualAddressOldValue) {
+        $("#billing_address_js").hide();
+    } else {
+        $("#billing_address_js").show();
+    }
+}
+
 //   $(function() {
 //     // Owl Carousel
 //     var owl = $(".owl-carousel");

@@ -94,31 +94,31 @@ class ChartSizeDefenitionSeeder extends Seeder
 
         // 12-16
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'title' => 'EU',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'title' => 'IT',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'title' => 'FR',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'title' => 'UK',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'title' => 'Length',
         ]);
@@ -126,25 +126,25 @@ class ChartSizeDefenitionSeeder extends Seeder
 
         // 17-20
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'title' => 'Inside diameter in mm',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'title' => 'UK',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'title' => 'IT',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'title' => 'NL',
         ]);
@@ -152,19 +152,19 @@ class ChartSizeDefenitionSeeder extends Seeder
 
         // 21-23
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'title' => 'Head circumference in cm',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'title' => 'UK',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'title' => 'US',
         ]);
@@ -172,13 +172,13 @@ class ChartSizeDefenitionSeeder extends Seeder
 
         // 24-25
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'title' => 'International',
         ]);
 
         $chartSizeDefenition = ChartSizeDefenition::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'title' => 'Hand circumference in cm',
         ]);

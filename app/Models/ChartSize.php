@@ -23,19 +23,50 @@ class ChartSize extends Model
     ];
 
     public function category() {
-        $this->belongTo(ChartSizeCategory::class);
+        return $this->belongsTo(ChartSizeCategory::class);
     }
 
     public function gender() {
-        $this->belongTo(ChartSizeGender::class);
+        return $this->belongsTo(ChartSizeGender::class);
     }
 
     public function guide() {
-        $this->belongTo(ChartSizeGuide::class);
+        return $this->belongsTo(ChartSizeGuide::class, 'chart_size_guide_id');
     }
 
     public function defenition() {
-        $this->belongTo(ChartSizeDefenition::class);
+        return $this->belongsTo(ChartSizeDefenition::class, 'chart_size_defenition_id');
+    }
+
+    public function getSizesAttribute()
+    {
+        return explode('|', $this->size);
+    }
+
+    // public function getSizeByGuide($guideId)
+    // {
+    //     $sizes = $this->getSizesAttribute();
+
+    //     foreach ($sizes as $size) {
+    //         if ($size === $guideId) {
+    //             return $size;
+    //         }
+    //     }
+
+    //     return null;
+    // }
+
+    public function getSizeByGuide($guideId)
+    {
+        $sizes = $this->getSizesAttribute();
+
+        foreach ($sizes as $size) {
+            if (strpos($size, $guideId) !== false) {
+                return $size;
+            }
+        }
+
+        return null;
     }
 
 }

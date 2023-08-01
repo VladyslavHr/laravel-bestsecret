@@ -33,7 +33,8 @@
             </div>
             @else
             <div class="show-price-ws py-3">
-                {{ number_format($product->old_price, 0, ',', ' ')  }} CZK
+                {{-- {{ number_format($product->old_price, 0, ',', ' ')  }} CZK --}}
+                {{ number_format($product->new_price, 0, ',', ' ')  }} CZK
             </div>
             @endif
             <h5>Find more ...</h5>
@@ -121,6 +122,7 @@
             </div>
             <div class="modal-body">
                 <div class="select-wrap">
+                    <input type="hidden" id="product_code_val" value="{{ $product->code }}" oninput="chart_select()">
                     <div class="gender-select pt-3">
                         <select class="form-select" id="gender_select" onchange="chart_select()">
                             <option value="women">Women</option>

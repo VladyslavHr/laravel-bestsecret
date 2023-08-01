@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ChartSizeGender extends Model
+class Size extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'product_id',
+        'size',
+        'quantity',
     ];
 
     protected $dates = [
@@ -18,7 +20,9 @@ class ChartSizeGender extends Model
         'updated_at',
     ];
 
-    public function category() {
-        return $this->hasMany(ChartSizeCategory::class);
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

@@ -104,7 +104,8 @@
                         </div>
                     @else
                         <div class="text-center price-ws pt-2">
-                            <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong>
+                            <strong>{{ number_format($product->new_price, 0, ',', ' ') }} Kč</strong>
+                            {{-- <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong> --}}
                         </div>
                     @endif
                 </div>

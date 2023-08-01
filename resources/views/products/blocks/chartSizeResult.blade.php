@@ -1,62 +1,117 @@
 <div class="container">
     <div class=" py-5 chart-size-result-select">
         <div class="table-responsive">
-            <table class="table">
+            {{-- <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
+                    <tr>
+                        <th scope="col">#</th>
+                        @foreach ($guides as $guide)
+                            <th scope="col">{{ $guide->title }}</th>
+                        @endforeach
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                    @foreach ($sizes as $size)
+                    <tr>
+                        <th>{{ $size->size }}</th>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table> --}}
+
+
+
+            {{-- <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        @foreach ($guides as $guide)
+                            <th scope="col">{{ $guide->title }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($sizes as $size)
+                        @foreach ($defenitions as $defenition)
+                        <tr>
+                            <td>{{ $defenition->title }}</td>
+                            <td>{{ $size->size }}</td>
+                        </tr>
+                        @endforeach
+                    @endforeach
+                </tbody>
+            </table> --}}
+
+
+            {{-- <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        @foreach ($guides as $guide)
+                            <th scope="col">{{ $guide->title }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($defenitions as $defenition)
+                        <tr>
+                            <td>{{ $defenition->title }}</td>
+                            @foreach ($chartSizes as $size)
+                                <td>{{ $size->size }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table> --}}
+
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        @foreach ($guides as $guide)
+                            <th scope="col">{{ $guide->title }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($defenitions as $defenition)
+                        <tr>
+                            <td>{{ $defenition->title }}</td>
+                            @foreach ($guides as $guide)
+                                @php
+                                    $size = $chartSizes
+                                        ->where('chart_size_defenition_id', $defenition->id)
+                                        ->where('chart_size_guide_id', $guide->id)
+                                        ->first();
+                                @endphp
+                                <td>{{ $size ? $size->size : '-' }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+
+
+            {{-- <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        @foreach ($sizes as $size)
+                            <th scope="col">{{ $size->guide->title }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($sizes as $size)
+                        <tr>
+                            <th scope="row">{{ $size->defenition->title }}</th>
+                            <td>{{ $size->size }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table> --}}
         </div>
     </div>
-
 </div>

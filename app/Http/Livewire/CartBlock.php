@@ -16,6 +16,7 @@ class CartBlock extends Component
     public $oldTotalPrice = 0;
     public $deliverySum = 0;
     public $productCount = 1;
+    // public $productSum = 0;
 
     public function render()
     {
@@ -24,6 +25,8 @@ class CartBlock extends Component
         $this->savingMoney = Cart::getSavingMoney();
         $this->oldTotalPrice = Cart::getOldSum();
         $this->deliverySum = Cart::getDeliverySum();
+        $this->totalPricePay = Cart::getTotalSumPay();
+        // $this->productSum = Cart::getProductSum();
 
         return view('livewire.cart-block');
     }
@@ -40,6 +43,8 @@ class CartBlock extends Component
         if ($expectedCount <= $maxCount && $expectedCount >= $minCount) {
             Cart::addProduct($productId,  $action, $productSize);
         }
+
+
 
     }
 

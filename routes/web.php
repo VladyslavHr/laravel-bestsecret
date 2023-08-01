@@ -41,7 +41,16 @@ Route::get('/titles/{title}', [\App\Http\Controllers\ProductController::class, '
 Route::get('/designers', [\App\Http\Controllers\BrandController::class, 'index'])->name('brands.index');
 Route::get('/designers/{brand}', [\App\Http\Controllers\BrandController::class, 'show'])->name('brands.show');
 
-Route::post('sizeChart', [App\Http\Controllers\ProductController::class, 'sizeChart']);
+// Route::post('sizeChart', [App\Http\Controllers\ProductController::class, 'sizeChart']);
+Route::post('sizeChart/{product}', [App\Http\Controllers\ProductController::class, 'sizeChart']);
+
+// Orders
+Route::get('/order-confrim', [App\Http\Controllers\OrderController::class, 'confirm'])->name('orders.confirm');
+Route::get('/thanks', [App\Http\Controllers\OrderController::class, 'thanks'])->name('orders.thanks');
+
+
+Route::post('/order-create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('orders.create');
+
 
 
 Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])->name('carts.index');

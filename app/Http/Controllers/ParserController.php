@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Parser,Product,ProductGallery};
+use App\Models\{Parser,Product,ProductGallery,Size};
 use Illuminate\Http\Request;
 use simplehtmldom\HtmlWeb;
 use Illuminate\Support\Facades\Http;
@@ -34,6 +34,8 @@ class ParserController extends Controller
 
     public function ac_save_product_info(Request $request)
     {
+        // $time = time();
+
         $product = Product::where('code', $request->code)->first();
 
         $product->update([
@@ -44,7 +46,41 @@ class ParserController extends Controller
             'sub_category' => $request->product['sub_category'],
             // 'description' => $request->product['description'] ? $request->product['description'] : '404',
             'description' => $request->product['description'] ?: '404',
+            'product_link' => $request->product['link'],
+            'parse_index' => $request->product['time_start'],
         ]);
+
+
+        if ($product->description == '404') {
+            Size::updateOrCreate([
+                'product_id' => $product->id,
+                'size' => null,
+                'quantity' => null,
+            ]);
+        }else{
+            foreach ($request->product['sizes'] as $size) {
+
+                if (!$request->product['amount'] ) {
+                    if (strstr($size, "(sold out)")) {
+                        $quantity = 0;
+                    }elseif (strstr($size, "(1 left)")) {
+                        $quantity = 1;
+                    }elseif(strstr($size, "(2 left)")){
+                        $quantity = 2;
+                    }else{
+                        $quantity = 5;
+                    }
+                }else{
+                    $quantity = $request->product['amount'];
+                }
+
+                Size::updateOrCreate([
+                    'product_id' => $product->id,
+                    'size' => $size,
+                    'quantity' => $quantity,
+                ]);
+            };
+        }
 
         foreach ($request->product['images'] as $image) {
             ProductGallery::updateOrCreate([
@@ -53,20 +89,19 @@ class ParserController extends Controller
             ]);
         }
 
-
         return([
             'status' => 'ok',
             'request' => $request->all(),
             'sizes' => strlen(implode(',', $request->product['sizes'])),
             'link' => $this->ac_get_product_link(),
             'product' => $product,
+            'parse_index' => $time,
         ]);
 
     }
 
     public function ac_parsePage()
     {
-
         $json = file_get_contents('php://input');
 
         $arr = json_decode($json, true);
@@ -75,12 +110,10 @@ class ParserController extends Controller
 
         // $code = preg_replace('//', '', $product['code']);
 
-
         $counter = [];
         foreach ($products as $product) {
 
             $parsed_url = parse_url($product['url']);
-
 
             $url_query = $parsed_url['query'];
 
@@ -93,7 +126,6 @@ class ParserController extends Controller
             $sale = preg_replace('/\D/', '', $product['sale']);
 
             $sale = abs($sale);
-
 
             $price_replace = [
                 '.',
@@ -122,18 +154,14 @@ class ParserController extends Controller
                 'sale' => $sale,
             ]);
 
-
             // @$counter[$output['code']] += 1;
-
         }
-
 
         return([
             'status' => 'ok',
             'products' => $products,
             // 'counter' => $counter,
         ]);
-
 
     }
     /**

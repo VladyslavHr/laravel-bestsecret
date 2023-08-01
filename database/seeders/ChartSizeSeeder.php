@@ -832,7 +832,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 30,
             'chart_size_defenition_id' => 7,
-            'size' => '54',
+            'size' => '54|55',
         ]);
 
         $chartSize = ChartSize::create([
@@ -840,7 +840,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 30,
             'chart_size_defenition_id' => 8,
-            'size' => '6 5/8',
+            'size' => '6 5/8|6 3/4',
         ]);
 
         $chartSize = ChartSize::create([
@@ -848,39 +848,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 30,
             'chart_size_defenition_id' => 9,
-            'size' => '6 3/4',
+            'size' => '6 3/4|6 7/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 30,
-            'chart_size_defenition_id' => 7,
-            'size' => '55',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 30,
-            'chart_size_defenition_id' => 8,
-            'size' => '6 3/4',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 30,
-            'chart_size_defenition_id' => 9,
-            'size' => '6 7/8',
-        ]);
         // guide 31
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 3,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 31,
             'chart_size_defenition_id' => 7,
-            'size' => '56',
+            'size' => '56|57',
         ]);
 
         $chartSize = ChartSize::create([
@@ -888,7 +865,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 31,
             'chart_size_defenition_id' => 8,
-            'size' => '6 7/8',
+            'size' => '6 7/8|7',
         ]);
 
         $chartSize = ChartSize::create([
@@ -896,39 +873,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 31,
             'chart_size_defenition_id' => 9,
-            'size' => '7',
+            'size' => '7|7 1/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 31,
-            'chart_size_defenition_id' => 7,
-            'size' => '57',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 31,
-            'chart_size_defenition_id' => 8,
-            'size' => '7',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 31,
-            'chart_size_defenition_id' => 9,
-            'size' => '7 1/8',
-        ]);
         // guide 32
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 3,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 32,
             'chart_size_defenition_id' => 7,
-            'size' => '58',
+            'size' => '58|59',
         ]);
 
         $chartSize = ChartSize::create([
@@ -936,7 +890,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 32,
             'chart_size_defenition_id' => 8,
-            'size' => '7 1/8',
+            'size' => '7 1/8|7 1/4',
         ]);
 
         $chartSize = ChartSize::create([
@@ -944,39 +898,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 32,
             'chart_size_defenition_id' => 9,
-            'size' => '7 1/4',
+            'size' => '7 1/4|7 3/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 32,
-            'chart_size_defenition_id' => 7,
-            'size' => '59',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 32,
-            'chart_size_defenition_id' => 8,
-            'size' => '7 1/4',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 32,
-            'chart_size_defenition_id' => 9,
-            'size' => '7 3/8',
-        ]);
         // guide 33
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 3,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 33,
             'chart_size_defenition_id' => 7,
-            'size' => '60',
+            'size' => '60|61',
         ]);
 
         $chartSize = ChartSize::create([
@@ -984,7 +915,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 33,
             'chart_size_defenition_id' => 8,
-            'size' => '7 3/8',
+            'size' => '7 3/8|7 1/2',
         ]);
 
         $chartSize = ChartSize::create([
@@ -992,39 +923,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 33,
             'chart_size_defenition_id' => 9,
-            'size' => '7 1/2',
+            'size' => '7 1/2|7 5/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 33,
-            'chart_size_defenition_id' => 7,
-            'size' => '61',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 33,
-            'chart_size_defenition_id' => 8,
-            'size' => '7 1/2',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 33,
-            'chart_size_defenition_id' => 9,
-            'size' => '7 5/8',
-        ]);
         // guide 34
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 3,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 34,
             'chart_size_defenition_id' => 7,
-            'size' => '62',
+            'size' => '62|63',
         ]);
 
         $chartSize = ChartSize::create([
@@ -1032,7 +940,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 34,
             'chart_size_defenition_id' => 8,
-            'size' => '7 5/8',
+            'size' => '7 5/8|7 3/4',
         ]);
 
         $chartSize = ChartSize::create([
@@ -1040,35 +948,8 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 34,
             'chart_size_defenition_id' => 9,
-            'size' => '7 3/4',
+            'size' => '7 3/4|8',
         ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 34,
-            'chart_size_defenition_id' => 7,
-            'size' => '63',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 34,
-            'chart_size_defenition_id' => 8,
-            'size' => '7 3/4',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 34,
-            'chart_size_defenition_id' => 9,
-            'size' => '8',
-        ]);
-
-
-
 
         // Gloves
         // guide 35
@@ -1077,7 +958,7 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 35,
             'chart_size_defenition_id' => 10,
-            'size' => '7',
+            'size' => '7|7.5',
         ]);
 
         $chartSize = ChartSize::create([
@@ -1085,31 +966,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 35,
             'chart_size_defenition_id' => 11,
-            'size' => '19',
+            'size' => '19|20',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 35,
-            'chart_size_defenition_id' => 10,
-            'size' => '7.5',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 35,
-            'chart_size_defenition_id' => 11,
-            'size' => '20',
-        ]);
         // guide 36
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 4,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 36,
             'chart_size_defenition_id' => 10,
-            'size' => '8',
+            'size' => '8|8.5',
         ]);
 
         $chartSize = ChartSize::create([
@@ -1117,31 +983,16 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 36,
             'chart_size_defenition_id' => 11,
-            'size' => '22',
+            'size' => '22|23',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 36,
-            'chart_size_defenition_id' => 10,
-            'size' => '8.5',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 36,
-            'chart_size_defenition_id' => 11,
-            'size' => '23',
-        ]);
         // guide 37
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 4,
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 37,
             'chart_size_defenition_id' => 10,
-            'size' => '9',
+            'size' => '9|9.5',
         ]);
 
         $chartSize = ChartSize::create([
@@ -1149,24 +1000,9 @@ class ChartSizeSeeder extends Seeder
             'chart_size_gender_id' => 1,
             'chart_size_guide_id' => 37,
             'chart_size_defenition_id' => 11,
-            'size' => '24',
+            'size' => '24|26',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 37,
-            'chart_size_defenition_id' => 10,
-            'size' => '9.5',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 1,
-            'chart_size_guide_id' => 37,
-            'chart_size_defenition_id' => 11,
-            'size' => '26',
-        ]);
         // guide 38
         $chartSize = ChartSize::create([
             'chart_size_category_id' => 4,
@@ -1200,15 +1036,12 @@ class ChartSizeSeeder extends Seeder
             'size' => '29',
         ]);
 
-
-
         // Women
-
 
         // Belts
         // guide 40
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 40,
             'chart_size_defenition_id' => 12,
@@ -1216,7 +1049,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 40,
             'chart_size_defenition_id' => 13,
@@ -1224,7 +1057,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 40,
             'chart_size_defenition_id' => 14,
@@ -1232,7 +1065,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 40,
             'chart_size_defenition_id' => 15,
@@ -1240,7 +1073,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 40,
             'chart_size_defenition_id' => 16,
@@ -1248,7 +1081,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 41
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 41,
             'chart_size_defenition_id' => 12,
@@ -1256,7 +1089,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 41,
             'chart_size_defenition_id' => 13,
@@ -1264,7 +1097,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 41,
             'chart_size_defenition_id' => 14,
@@ -1272,7 +1105,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 41,
             'chart_size_defenition_id' => 15,
@@ -1280,7 +1113,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 41,
             'chart_size_defenition_id' => 16,
@@ -1288,7 +1121,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 42
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 42,
             'chart_size_defenition_id' => 12,
@@ -1296,7 +1129,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 42,
             'chart_size_defenition_id' => 13,
@@ -1304,7 +1137,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 42,
             'chart_size_defenition_id' => 14,
@@ -1312,7 +1145,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 42,
             'chart_size_defenition_id' => 15,
@@ -1320,7 +1153,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 42,
             'chart_size_defenition_id' => 16,
@@ -1328,7 +1161,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 43
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 43,
             'chart_size_defenition_id' => 12,
@@ -1336,7 +1169,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 43,
             'chart_size_defenition_id' => 13,
@@ -1344,7 +1177,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 43,
             'chart_size_defenition_id' => 14,
@@ -1352,7 +1185,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 43,
             'chart_size_defenition_id' => 15,
@@ -1360,7 +1193,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 43,
             'chart_size_defenition_id' => 16,
@@ -1368,7 +1201,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 44
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 44,
             'chart_size_defenition_id' => 12,
@@ -1376,7 +1209,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 44,
             'chart_size_defenition_id' => 13,
@@ -1384,7 +1217,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 44,
             'chart_size_defenition_id' => 14,
@@ -1392,7 +1225,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 44,
             'chart_size_defenition_id' => 15,
@@ -1400,7 +1233,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 44,
             'chart_size_defenition_id' => 16,
@@ -1408,7 +1241,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 45
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 45,
             'chart_size_defenition_id' => 12,
@@ -1416,7 +1249,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 45,
             'chart_size_defenition_id' => 13,
@@ -1424,7 +1257,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 45,
             'chart_size_defenition_id' => 14,
@@ -1432,7 +1265,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 45,
             'chart_size_defenition_id' => 15,
@@ -1440,7 +1273,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 45,
             'chart_size_defenition_id' => 16,
@@ -1448,7 +1281,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 46
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 46,
             'chart_size_defenition_id' => 12,
@@ -1456,7 +1289,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 46,
             'chart_size_defenition_id' => 13,
@@ -1464,7 +1297,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 46,
             'chart_size_defenition_id' => 14,
@@ -1472,7 +1305,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 46,
             'chart_size_defenition_id' => 15,
@@ -1480,7 +1313,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 46,
             'chart_size_defenition_id' => 16,
@@ -1488,7 +1321,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 47
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 47,
             'chart_size_defenition_id' => 12,
@@ -1496,7 +1329,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 47,
             'chart_size_defenition_id' => 13,
@@ -1504,7 +1337,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 47,
             'chart_size_defenition_id' => 14,
@@ -1512,7 +1345,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 47,
             'chart_size_defenition_id' => 15,
@@ -1520,7 +1353,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 1,
+            'chart_size_category_id' => 5,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 47,
             'chart_size_defenition_id' => 16,
@@ -1532,7 +1365,7 @@ class ChartSizeSeeder extends Seeder
 
         // guide 48
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 48,
             'chart_size_defenition_id' => 17,
@@ -1540,7 +1373,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 48,
             'chart_size_defenition_id' => 18,
@@ -1548,7 +1381,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 48,
             'chart_size_defenition_id' => 19,
@@ -1556,7 +1389,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 48,
             'chart_size_defenition_id' => 20,
@@ -1564,7 +1397,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 49
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 49,
             'chart_size_defenition_id' => 17,
@@ -1572,7 +1405,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 49,
             'chart_size_defenition_id' => 18,
@@ -1580,7 +1413,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 49,
             'chart_size_defenition_id' => 19,
@@ -1588,7 +1421,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 49,
             'chart_size_defenition_id' => 20,
@@ -1596,7 +1429,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 50
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 50,
             'chart_size_defenition_id' => 17,
@@ -1604,7 +1437,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 50,
             'chart_size_defenition_id' => 18,
@@ -1612,7 +1445,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 50,
             'chart_size_defenition_id' => 19,
@@ -1620,7 +1453,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 50,
             'chart_size_defenition_id' => 20,
@@ -1628,7 +1461,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 51
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 51,
             'chart_size_defenition_id' => 17,
@@ -1636,7 +1469,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 51,
             'chart_size_defenition_id' => 18,
@@ -1644,7 +1477,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 51,
             'chart_size_defenition_id' => 19,
@@ -1652,7 +1485,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 51,
             'chart_size_defenition_id' => 20,
@@ -1660,7 +1493,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 52
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 52,
             'chart_size_defenition_id' => 17,
@@ -1668,7 +1501,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 52,
             'chart_size_defenition_id' => 18,
@@ -1676,7 +1509,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 52,
             'chart_size_defenition_id' => 19,
@@ -1684,7 +1517,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 52,
             'chart_size_defenition_id' => 20,
@@ -1692,7 +1525,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 53
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 53,
             'chart_size_defenition_id' => 17,
@@ -1700,7 +1533,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 53,
             'chart_size_defenition_id' => 18,
@@ -1708,7 +1541,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 53,
             'chart_size_defenition_id' => 19,
@@ -1716,7 +1549,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 53,
             'chart_size_defenition_id' => 20,
@@ -1724,7 +1557,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 54
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 54,
             'chart_size_defenition_id' => 17,
@@ -1732,7 +1565,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 54,
             'chart_size_defenition_id' => 18,
@@ -1740,7 +1573,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 54,
             'chart_size_defenition_id' => 19,
@@ -1748,7 +1581,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 54,
             'chart_size_defenition_id' => 20,
@@ -1756,7 +1589,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 55
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 55,
             'chart_size_defenition_id' => 17,
@@ -1764,7 +1597,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 55,
             'chart_size_defenition_id' => 18,
@@ -1772,7 +1605,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 55,
             'chart_size_defenition_id' => 19,
@@ -1780,7 +1613,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 55,
             'chart_size_defenition_id' => 20,
@@ -1788,7 +1621,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 56
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 56,
             'chart_size_defenition_id' => 17,
@@ -1796,7 +1629,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 56,
             'chart_size_defenition_id' => 18,
@@ -1804,7 +1637,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 56,
             'chart_size_defenition_id' => 19,
@@ -1812,7 +1645,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 56,
             'chart_size_defenition_id' => 20,
@@ -1820,7 +1653,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 57
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 57,
             'chart_size_defenition_id' => 17,
@@ -1828,7 +1661,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 57,
             'chart_size_defenition_id' => 18,
@@ -1836,7 +1669,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 57,
             'chart_size_defenition_id' => 19,
@@ -1844,7 +1677,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 57,
             'chart_size_defenition_id' => 20,
@@ -1852,7 +1685,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 58
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 58,
             'chart_size_defenition_id' => 17,
@@ -1860,7 +1693,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 58,
             'chart_size_defenition_id' => 18,
@@ -1868,7 +1701,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 58,
             'chart_size_defenition_id' => 19,
@@ -1876,7 +1709,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 58,
             'chart_size_defenition_id' => 20,
@@ -1884,7 +1717,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 59
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 59,
             'chart_size_defenition_id' => 17,
@@ -1892,7 +1725,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 59,
             'chart_size_defenition_id' => 18,
@@ -1900,7 +1733,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 59,
             'chart_size_defenition_id' => 19,
@@ -1908,7 +1741,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 59,
             'chart_size_defenition_id' => 20,
@@ -1916,7 +1749,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 60
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 60,
             'chart_size_defenition_id' => 17,
@@ -1924,7 +1757,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 60,
             'chart_size_defenition_id' => 18,
@@ -1932,7 +1765,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 60,
             'chart_size_defenition_id' => 19,
@@ -1940,7 +1773,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 60,
             'chart_size_defenition_id' => 20,
@@ -1948,7 +1781,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 61
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 61,
             'chart_size_defenition_id' => 17,
@@ -1956,7 +1789,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 61,
             'chart_size_defenition_id' => 18,
@@ -1964,7 +1797,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 61,
             'chart_size_defenition_id' => 19,
@@ -1972,7 +1805,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 61,
             'chart_size_defenition_id' => 20,
@@ -1980,7 +1813,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 62
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 62,
             'chart_size_defenition_id' => 17,
@@ -1988,7 +1821,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 62,
             'chart_size_defenition_id' => 18,
@@ -1996,7 +1829,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 62,
             'chart_size_defenition_id' => 19,
@@ -2004,7 +1837,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 62,
             'chart_size_defenition_id' => 20,
@@ -2012,7 +1845,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 63
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 63,
             'chart_size_defenition_id' => 17,
@@ -2020,7 +1853,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 63,
             'chart_size_defenition_id' => 18,
@@ -2028,7 +1861,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 63,
             'chart_size_defenition_id' => 19,
@@ -2036,7 +1869,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 63,
             'chart_size_defenition_id' => 20,
@@ -2044,7 +1877,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 64
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 64,
             'chart_size_defenition_id' => 17,
@@ -2052,7 +1885,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 64,
             'chart_size_defenition_id' => 18,
@@ -2060,7 +1893,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 64,
             'chart_size_defenition_id' => 19,
@@ -2068,7 +1901,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 64,
             'chart_size_defenition_id' => 20,
@@ -2076,7 +1909,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 65
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 65,
             'chart_size_defenition_id' => 17,
@@ -2084,7 +1917,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 65,
             'chart_size_defenition_id' => 18,
@@ -2092,7 +1925,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 65,
             'chart_size_defenition_id' => 19,
@@ -2100,7 +1933,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 65,
             'chart_size_defenition_id' => 20,
@@ -2108,7 +1941,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 66
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 66,
             'chart_size_defenition_id' => 17,
@@ -2116,7 +1949,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 66,
             'chart_size_defenition_id' => 18,
@@ -2124,7 +1957,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 66,
             'chart_size_defenition_id' => 19,
@@ -2132,7 +1965,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 66,
             'chart_size_defenition_id' => 20,
@@ -2140,7 +1973,7 @@ class ChartSizeSeeder extends Seeder
         ]);
         // guide 67
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 67,
             'chart_size_defenition_id' => 17,
@@ -2148,7 +1981,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 67,
             'chart_size_defenition_id' => 18,
@@ -2156,7 +1989,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 67,
             'chart_size_defenition_id' => 19,
@@ -2164,7 +1997,7 @@ class ChartSizeSeeder extends Seeder
         ]);
 
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 2,
+            'chart_size_category_id' => 6,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 67,
             'chart_size_defenition_id' => 20,
@@ -2172,336 +2005,178 @@ class ChartSizeSeeder extends Seeder
         ]);
 
 
-        // Hats
+        // Hats+changed
         // guide 68
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 68,
             'chart_size_defenition_id' => 21,
-            'size' => '52',
+            'size' => '52|53',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 68,
             'chart_size_defenition_id' => 22,
-            'size' => '6 3/8',
+            'size' => '6 3/8|6 1/2',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 68,
             'chart_size_defenition_id' => 23,
-            'size' => '6 1/2',
+            'size' => '6 1/2|6 5/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 68,
-            'chart_size_defenition_id' => 21,
-            'size' => '53',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 68,
-            'chart_size_defenition_id' => 22,
-            'size' => '6 1/2',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 68,
-            'chart_size_defenition_id' => 23,
-            'size' => '6 5/8',
-        ]);
         // guide 69
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 69,
             'chart_size_defenition_id' => 21,
-            'size' => '54',
+            'size' => '54|55',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 69,
             'chart_size_defenition_id' => 22,
-            'size' => '6 5/8',
+            'size' => '6 5/8|6 3/4',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 69,
             'chart_size_defenition_id' => 23,
-            'size' => '6 3/4',
+            'size' => '6 3/4|6 7/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 69,
-            'chart_size_defenition_id' => 21,
-            'size' => '55',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 69,
-            'chart_size_defenition_id' => 22,
-            'size' => '6 3/4',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 69,
-            'chart_size_defenition_id' => 23,
-            'size' => '6 7/8',
-        ]);
         // guide 70
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 70,
             'chart_size_defenition_id' => 21,
-            'size' => '56',
+            'size' => '56|57',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 70,
             'chart_size_defenition_id' => 22,
-            'size' => '6 7/8',
+            'size' => '6 7/8|7',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 70,
             'chart_size_defenition_id' => 23,
-            'size' => '7',
+            'size' => '7|7 1/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 70,
-            'chart_size_defenition_id' => 21,
-            'size' => '57',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 70,
-            'chart_size_defenition_id' => 22,
-            'size' => '7',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 70,
-            'chart_size_defenition_id' => 23,
-            'size' => '7 1/8',
-        ]);
         // guide 71
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 71,
             'chart_size_defenition_id' => 21,
-            'size' => '58',
+            'size' => '58|59',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 71,
             'chart_size_defenition_id' => 22,
-            'size' => '7 1/8',
+            'size' => '7 1/8|7 1/4',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
+            'chart_size_category_id' => 7,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 71,
             'chart_size_defenition_id' => 23,
-            'size' => '7 1/4',
+            'size' => '7 1/4|7 3/8',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 71,
-            'chart_size_defenition_id' => 21,
-            'size' => '59',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 71,
-            'chart_size_defenition_id' => 22,
-            'size' => '7 1/4',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 3,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 71,
-            'chart_size_defenition_id' => 23,
-            'size' => '7 3/8',
-        ]);
-
-
-        // Gloves
+        // Gloves+changed
 
         // guide 72
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 72,
             'chart_size_defenition_id' => 24,
-            'size' => '4.5',
+            'size' => '4.5|5',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 72,
             'chart_size_defenition_id' => 25,
-            'size' => '15.5',
+            'size' => '15.5|16',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 72,
-            'chart_size_defenition_id' => 24,
-            'size' => '5',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 72,
-            'chart_size_defenition_id' => 25,
-            'size' => '16',
-        ]);
         // guide 73
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 73,
             'chart_size_defenition_id' => 24,
-            'size' => '5.5',
+            'size' => '5.5|6',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 73,
             'chart_size_defenition_id' => 25,
-            'size' => '16.5',
+            'size' => '16.5|17',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 73,
-            'chart_size_defenition_id' => 24,
-            'size' => '6',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 73,
-            'chart_size_defenition_id' => 25,
-            'size' => '17',
-        ]);
         // guide 74
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 74,
             'chart_size_defenition_id' => 24,
-            'size' => '6.5',
+            'size' => '6.5|7',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 74,
             'chart_size_defenition_id' => 25,
-            'size' => '18',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 74,
-            'chart_size_defenition_id' => 24,
-            'size' => '7',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 74,
-            'chart_size_defenition_id' => 25,
-            'size' => '19',
+            'size' => '18|19',
         ]);
         // guide 75
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 75,
             'chart_size_defenition_id' => 24,
-            'size' => '7.5',
+            'size' => '7.5|8',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 75,
             'chart_size_defenition_id' => 25,
-            'size' => '20',
+            'size' => '20|22',
         ]);
 
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 75,
-            'chart_size_defenition_id' => 24,
-            'size' => '8',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 75,
-            'chart_size_defenition_id' => 25,
-            'size' => '22',
-        ]);
         // guide 76
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 76,
             'chart_size_defenition_id' => 24,
-            'size' => '8.5',
+            'size' => '8.5|9',
         ]);
         $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
+            'chart_size_category_id' => 8,
             'chart_size_gender_id' => 2,
             'chart_size_guide_id' => 76,
             'chart_size_defenition_id' => 25,
-            'size' => '23',
-        ]);
-
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 76,
-            'chart_size_defenition_id' => 24,
-            'size' => '9',
-        ]);
-        $chartSize = ChartSize::create([
-            'chart_size_category_id' => 4,
-            'chart_size_gender_id' => 2,
-            'chart_size_guide_id' => 76,
-            'chart_size_defenition_id' => 25,
-            'size' => '24',
+            'size' => '23|24',
         ]);
     }
 }

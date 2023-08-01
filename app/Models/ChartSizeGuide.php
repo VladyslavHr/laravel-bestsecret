@@ -22,10 +22,15 @@ class ChartSizeGuide extends Model
 
 
     public function category() {
-        $this->belongTo(ChartSizeCategory::class);
+        return $this->belongTo(ChartSizeCategory::class);
     }
 
     public function gender() {
-        $this->belongTo(ChartSizeGender::class);
+        return $this->belongTo(ChartSizeGender::class);
     }
+
+    // public function sizes() {
+    //     return $this->hasMany(ChartSize::class);
+    // }
+
 }

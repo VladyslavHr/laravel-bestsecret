@@ -258,6 +258,30 @@ body{
     text-decoration: none;
 }
 
+/* Order */
+
+.order-summary-pay-wrap{
+    background: #f2f2f2;
+}
+
+.order-summary-pay{
+    padding: 50px;
+    text-align: center;
+}
+
+.order-buy-now{
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    border: 0;
+}
+
+.order-buy-now:hover{
+    background-color: #818080;
+    /* background-color: #3e3e3e; */
+    transition: 0.4s;
+}
 
 /* OWL Carousel */
 .home-demo .item {

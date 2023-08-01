@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{ProductGallery,Product};
+use App\Models\{ProductGallery,Product,ChartSizeGender,ChartSizeCategory,ChartSizeDefenition,ChartSizeGuide,ChartSize};
 
 
 class ProductController extends Controller
@@ -36,7 +36,6 @@ class ProductController extends Controller
 
     public function show($code)
     {
-
         $product = Product::where('code', $code)->first();
 
         $images = [];
@@ -124,15 +123,55 @@ class ProductController extends Controller
     }
 
 
-    public function sizeChart() {
+    public function sizeChart(Request $request, $productCode)
+    {
+        $gender = $request->gender;
+        $category = $request->category;
+
+        $product = Product::where('code', $productCode)->first();
+
+        $chartSizegender = ChartSizeGender::where('title', $gender)->first();
+        $chartSizeCategory = ChartSizeCategory::where('title', $category)->where('chart_size_gender_id', $chartSizegender->id)->first();
+
+        $chartSizeDefenitions = ChartSizeDefenition::where('chart_size_gender_id', $chartSizegender->id)
+        ->where('chart_size_category_id', $chartSizeCategory->id)
+        ->get();
+
+        $chartSizeDefenitionsIds = [];
+        foreach ($chartSizeDefenitions as $chartSizeDefenition) {
+            $chartSizeDefenitionsIds[] = $chartSizeDefenition->id;
+        }
+
+        $chartSizeGuides = ChartSizeGuide::where('chart_size_gender_id', $chartSizegender->id)
+        ->where('chart_size_category_id', $chartSizeCategory->id)
+        ->get();
+
+        $chartSizeGuidesIds = [];
+        foreach ($chartSizeGuides as $chartSizeGuide) {
+            $chartSizeGuidesIds[] = $chartSizeGuide->id;
+        }
+
+        // debug();
+        $chartSizes = ChartSize::where('chart_size_category_id', $chartSizeCategory->id)
+        ->where('chart_size_gender_id', $chartSizegender->id)
+        ->whereIn('chart_size_guide_id', $chartSizeGuidesIds)
+        ->whereIn('chart_size_defenition_id', $chartSizeDefenitionsIds)
+        ->get();
 
 
+        debug($chartSizeCategory->id,$chartSizegender->id,$chartSizeGuidesIds,$chartSizeDefenitionsIds,$chartSizes);
 
-
+        // $neededSizes = array_filter($chartSizes->toArray(), function ($size) {
+        //     return $size['needed'] == true;
+        // });
 
         return [
             'status' => 'ok',
-            'chart_size_view' => view('products.blocks.chartSizeResult')->render(),
+            'chart_size_view' => view('products.blocks.chartSizeResult', [
+                'defenitions' => $chartSizeDefenitions,
+                'guides' => $chartSizeGuides,
+                'chartSizes' => $chartSizes,
+            ])->render(),
         ];
     }
 }

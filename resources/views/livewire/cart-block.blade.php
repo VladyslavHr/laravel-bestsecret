@@ -71,7 +71,8 @@
                             </div>
                             @else
                             <div class="text-center price-ws pt-3">
-                                <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong>
+                                <strong>{{ number_format($product->new_price, 0, ',', ' ') }} Kč</strong>
+                                {{-- <strong>{{ number_format($product->old_price, 0, ',', ' ') }} Kč</strong> --}}
                             </div>
                             @endif
                         </div>
@@ -87,12 +88,14 @@
         <div class="col-lg-4">
             <div class="order-summary-wrap">
                 <h3>Order summery</h3>
-                <span class="savings text-danger">
-                    <b>
-                    You're saving
-                    {{ number_format($savingMoney, 0, ',', ' ') }} KČ
-                    </b>
-                </span>
+                @if ($savingMoney != 0)
+                    <span class="savings text-danger">
+                        <b>
+                        You're saving
+                        {{ number_format($savingMoney, 0, ',', ' ') }} KČ
+                        </b>
+                    </span>
+                @endif
                 <div class="d-flex justify-content-between pt-3">
                     <span>
                         Regular price:
@@ -126,11 +129,12 @@
                 </div>
                 <div class="fs-5 pt-2">
                     <b>
-                        {{  number_format($totalPrice, 0, ',', ' ') }} KČ
+                        {{ number_format($totalPricePay, 0, ',', ' ') }} KČ
+                        {{-- {{ number_format($totalPrice, 0, ',', ' ') }} KČ --}}
                     </b>
                 </div>
                 <div class="order-link mt-4">
-                    <a href="#" >
+                    <a href="{{ route('orders.confirm') }}" >
                         CONTINUE
                     </a>
                 </div>
@@ -142,11 +146,11 @@
                         Total price
                     </span>
                     <span>
-                        452 145 KČ
+                        {{ number_format($totalPrice, 0, ',', ' ') }} KČ
                     </span>
                 </div>
                 <div class="order-link-small">
-                    <a href="#" >
+                    <a href="{{ route('orders.confirm') }}" >
                         CONTINUE
                     </a>
                 </div>

@@ -22,10 +22,29 @@ class ChartSizeDefenition extends Model
 
 
     public function category() {
-        $this->belongTo(ChartSizeCategory::class);
+        return $this->belongTo(ChartSizeCategory::class);
     }
 
     public function gender() {
-        $this->belongTo(ChartSizeGender::class);
+        return $this->belongTo(ChartSizeGender::class);
     }
+
+    public function sizes() {
+        return $this->hasMany(ChartSize::class);
+    }
+
+    public function guides() {
+        return $this->hasMany(ChartSizeGuide::class);
+    }
+
+    // public function getDefenitionByGuideId($guideId)
+    // {
+    //     $defenition = $this->where('chart_size_guide_id', $guideId)->first();
+
+    //     if ($size) {
+    //         return $size->size;
+    //     }
+
+    //     return null;
+    // }
 }
