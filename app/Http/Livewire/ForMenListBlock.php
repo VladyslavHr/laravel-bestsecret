@@ -86,6 +86,14 @@ class ForMenListBlock extends Component
         // ->where('store_category', '!=', 'Girls')
         ->where('description', '!=', '404')
         ->where('store_category', '!=', 'Girls')
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        })
+        // ->whereIn('id', function ($query) {
+        //     $query->select('product_id')
+        //         ->from('sizes')
+        //         ->where('quantity', '>', 0);
+        // })
         ->groupBy('sub_category','store_category')->get();
 
         $categoriesSorted = [];
@@ -97,7 +105,15 @@ class ForMenListBlock extends Component
         }
         // dd($categoriesSorted);
 
-        $products = Product::where('category', 'men_accessoires')->where('store_category', '!=', ' ');
+        $products = Product::where('category', 'men_accessoires')->where('store_category', '!=', ' ')
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        });
+        // ->whereIn('id', function ($query) {
+        //     $query->select('product_id')
+        //         ->from('sizes')
+        //         ->where('quantity', '>', 0);
+        // });
 
         if ($this->choosenStoreCategory !== 'all') {
             $products->where('store_category', $this->choosenStoreCategory);

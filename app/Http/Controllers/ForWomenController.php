@@ -8,7 +8,13 @@ use App\Models\{ProductGallery,Product};
 class ForWomenController extends Controller
 {
     public function index() {
-        $products = Product::where('category', 'women_accessoires')->get();
+        // $products = Product::where('category', 'women_accessoires')->where('description', '!=', '404')->get();
+        $products = Product::where('category', 'women_accessoires')
+        ->where('description', '!=', '404')
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '!=', 0);
+        })
+        ->get();
 
         return view('forWomen.index',[
             'products' => $products,

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Product;
+use App\Models\{Product,Size};
 use App\Services\Cart;
 
 class CartBlock extends Component
@@ -16,11 +16,13 @@ class CartBlock extends Component
     public $oldTotalPrice = 0;
     public $deliverySum = 0;
     public $productCount = 1;
+    public $totalPricePay = 0;
     // public $productSum = 0;
 
     public function render()
     {
         $this->products = Cart::getProducts();
+        debug($this->products);
         $this->totalPrice = Cart::getTotalSum();
         $this->savingMoney = Cart::getSavingMoney();
         $this->oldTotalPrice = Cart::getOldSum();
@@ -31,28 +33,42 @@ class CartBlock extends Component
         return view('livewire.cart-block');
     }
 
-    public function changeCount($productId, $productSize, $action)
+    public function changeCount($productId, $productSizeId, $action)
     {
+        // debug($productId, $productSizeId, $action);
         $product = Product::find($productId);
+        $productSize = Size::find($productSizeId);
+        // debug($product, $productSize);
         $minCount = 1;
-        $maxCount = $product->amount ?? 1;
-        $currentCount = Cart::getProductSizeCount($productId, $productSize);
+        // $maxCount = $product->amount ?? 1;
+        $maxCount = $productSize->quantity;
+        $currentCount = Cart::getProductSizeCount($productId, $productSizeId);
+        // debug($currentCount);
 
         $expectedCount = $currentCount + $action;
+        // debug($expectedCount);
 
         if ($expectedCount <= $maxCount && $expectedCount >= $minCount) {
-            Cart::addProduct($productId,  $action, $productSize);
+            debug('if add product');
+            Cart::addProduct($productId,  $action, $productSizeId);
         }
-
-
 
     }
 
-    public function removeItem($id)
+    // public function removeItem($id)
+    // {
+    //     Cart::removeProduct($id);
+
+    //     $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
+    // }
+
+    public function removeItem($productId, $sizeId)
     {
-        Cart::removeProduct($id);
+        Cart::removeProduct($productId, $sizeId);
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
+        // $this->products = Cart::getProducts();
+
     }
 
     public function removeCart()
@@ -61,4 +77,5 @@ class CartBlock extends Component
 
         $this->emit('cartTotalCountUpdated', Cart::getTotalCount());
     }
+
 }

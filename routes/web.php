@@ -49,7 +49,7 @@ Route::get('/order-confrim', [App\Http\Controllers\OrderController::class, 'conf
 Route::get('/thanks', [App\Http\Controllers\OrderController::class, 'thanks'])->name('orders.thanks');
 
 
-Route::post('/order-create', [App\Http\Controllers\OrderController::class, 'createOrder'])->name('orders.create');
+Route::post('/order-create', [App\Http\Controllers\OrderController::class, 'pay'])->name('orders.create');
 
 
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{ProductGallery,Product,ChartSizeGender,ChartSizeCategory,ChartSizeDefenition,ChartSizeGuide,ChartSize};
+use App\Models\{ProductGallery,Product,ChartSizeGender,ChartSizeCategory,ChartSizeDefenition,ChartSizeGuide,ChartSize,Size};
 
 
 class ProductController extends Controller
@@ -36,17 +36,20 @@ class ProductController extends Controller
 
     public function show($code)
     {
+        // dump($code);
         $product = Product::where('code', $code)->first();
+        // dd($product);
 
         $images = [];
         foreach ($product->gallery as $image) {
             $images[] = str_replace('68x84', '620x757', $image->image);
         }
 
+        // dd($product->image_default);
         // $product->price = ($product->price * 0.30) + $product->price;
         // $product->price *= 1.3;
 
-        $product->sale = 100 - (($product->price / $product->old_price) * 100);
+        // $product->sale = 100 - (($product->price / $product->old_price) * 100); ?????
 
         $size = str_replace('Select your size,', '', $product->size);
 
@@ -62,40 +65,57 @@ class ProductController extends Controller
         // dd($color_string);
 
 
+        // SIZES!
+        // $productSizes = $product->sizes;
+        $productSizes = Size::where('product_id', $product->id)->where('size', '!=', 'Select your size')->get();
 
-        $codeExploded = explode('-', $code);
 
-        $codeFirst = (int)$codeExploded[0];
 
-        $similarProducts = Product::where('code', $codeFirst)->get();
-        // dd($similarProducts);
 
-        $color_string_similar = [];
-        foreach ($similarProducts as $product) {
-            $colorSimilar = explode(',', $product->color);
-            // dd($similarProducts);
 
-            $colorSimilar = explode(' ', $colorSimilar[1]);
+        // $codeExploded = explode('-', $code);
 
-            $color_separate_similar = array_shift($colorSimilar);
+        // $codeFirst = (int)$codeExploded[0];
 
-            $color_string_similar = implode(' ', $colorSimilar);
+        // $similarProducts = Product::where('code', $codeFirst)->get();
+        // // dd($similarProducts);
 
-        }
+        // $color_string_similar = [];
+        // foreach ($similarProducts as $product) {
+        //     $colorSimilar = explode(',', $product->color);
+        //     // dd($similarProducts);
+
+        //     $colorSimilar = explode(' ', $colorSimilar[1]);
+
+        //     $color_separate_similar = array_shift($colorSimilar);
+
+        //     $color_string_similar = implode(' ', $colorSimilar);
+
+        // }
 
         return view('products.show',[
             'product' => $product,
             'images' => $images,
             'sizes' => $sizes,
             'color_string' => $color_string,
-            'similarProducts' => $similarProducts,
-            'color_string_similar' => $color_string_similar,
+            'productSizes' => $productSizes,
+            // 'similarProducts' => $similarProducts,
+            // 'color_string_similar' => $color_string_similar,
         ]);
     }
 
     public function storeCategories($store_category)
     {
-        $products = Product::where('store_category', $store_category)->get();
+        $products = Product::where('store_category', $store_category)
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        })
+        // ->whereIn('id', function ($query) {
+        //     $query->select('product_id')
+        //         ->from('sizes')
+        //         ->where('quantity', '>', 0);
+        // })
+        ->get();
 
         return view('products.storeCategories',[
             'products' => $products,
@@ -104,7 +124,16 @@ class ProductController extends Controller
 
     public function subCategories($sub_category)
     {
-        $products = Product::where('sub_category', $sub_category)->get();
+        $products = Product::where('sub_category', $sub_category)
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        })
+        // ->whereIn('id', function ($query) {
+        //     $query->select('product_id')
+        //         ->from('sizes')
+        //         ->where('quantity', '>', 0);
+        // })
+        ->get();
 
 
 
@@ -115,7 +144,16 @@ class ProductController extends Controller
 
     public function titles($title)
     {
-        $products = Product::where('title', $title)->get();
+        $products = Product::where('title', $title)
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        })
+        // ->whereIn('id', function ($query) {
+        //     $query->select('product_id')
+        //         ->from('sizes')
+        //         ->where('quantity', '>', 0);
+        // })
+        ->get();
 
         return view('products.titles',[
             'products' => $products,

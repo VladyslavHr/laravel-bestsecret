@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Product;
+use App\Models\{Product,Size};
 
 
 class Cart extends ServiceProvider
@@ -17,12 +17,13 @@ class Cart extends ServiceProvider
 
         if (isset($cart[$productId])) {
             foreach ($cart[$productId] as $product) {
-            $total += $product;
+                $total += $product;
             }
         }
 
         return $total;
     }
+
 
     public static function getProductSizeCount($productId, $productSize)
     {
@@ -35,13 +36,22 @@ class Cart extends ServiceProvider
     {
 
         $cart = session('cart', []);
+        // debug($cart);
         $products = collect();
 
         foreach ($cart as $productId => $sizes) {
+            // debug($productId);
+            // debug($sizes);
             $product = Product::find($productId);
             // dd($product);
             foreach ($sizes as $size => $count) {
+                // debug($sizes);
+                $productSize = Size::where('id', $size)->first();
+                // debug($size);
+                // debug($productSize);
+                // debug($count);
                 $productCopy = clone $product;
+
                 $productCopy->old_sum = $product->old_price * $count;
 
                 $productCopy->sum = $product->marged_price  * $count;
@@ -51,7 +61,8 @@ class Cart extends ServiceProvider
                 // (+ $product->price)
                 $productCopy->sum_formated = number_format($product->marged_price * $count, 2);
                 $productCopy->cart_amount = $count;
-                $productCopy->size = $size;
+                $productCopy->size = $productSize->size;
+                $productCopy->sizeId = $productSize->id;
                 $productCopy->color = $product->color; // Используем одинаковый цвет для каждого ID продукта
 
                 $products->push($productCopy);
@@ -59,6 +70,7 @@ class Cart extends ServiceProvider
         }
 
         self::$products = $products;
+        // debug($products);
 
         return $products;
 
@@ -104,7 +116,10 @@ class Cart extends ServiceProvider
             }else{
                 // $product->saving = self::getOldSum() - self::getTotalSum();
                 // $saving = self::getOldSum() - self::getTotalSum();
+                // dump($product->old_price, $product->marged_price, $product->cart_amount);
                 $product->saving = ($product->old_price - $product->marged_price) * $product->cart_amount;
+                // dd($product->saving);
+
             }
         }
 
@@ -167,15 +182,35 @@ class Cart extends ServiceProvider
     {
         $cart = session('cart', []);
 
+        $productSize = Size::where('id', $size)->first();
+        // Bug ? Fitch ? $cart[$productId][$size] >= $productSize->quantity
+
+        // $currentCount = Cart::getProductSizeCount($productId, $productSize->id);
+        // debug($currentCount);
+
+        // $expectedCount = $currentCount + $action;
+        // debug($expectedCount);
+
         if (isset($cart[$productId][$size])) {
-            if (isset($cart[$productId][$size])) {
+            if ($productSize->quantity >= $cart[$productId][$size] + $amount) {
+                debug('if2');
                 $cart[$productId][$size] += $amount;
-            } else {
-                $cart[$productId][$size] = $amount;
             }
+            debug('if');
         } else {
+            debug('else');
             $cart[$productId][$size] = $amount;
         }
+
+        // if (isset($cart[$productId][$size])) {
+        //     if (isset($cart[$productId][$size])) {
+        //         $cart[$productId][$size] += $amount;
+        //     } else {
+        //         $cart[$productId][$size] = $amount;
+        //     }
+        // } else {
+        //     $cart[$productId][$size] = $amount;
+        // }
 
         session(['cart' => $cart]);
 
@@ -193,16 +228,24 @@ class Cart extends ServiceProvider
         return $cart;
     }
 
-    public static function removeProduct($productId)
+    public static function removeProduct($productId, $sizeId)
     {
-        $cart_arr = session('cart', []);
+        $cart = session('cart', []);
 
-        unset($cart_arr[$productId]);
+        if (isset($cart[$productId])) {
+            if ($sizeId && isset($cart[$productId][$sizeId])) {
+                unset($cart[$productId][$sizeId]);
+                if (empty($cart[$productId])) {
+                    unset($cart[$productId]);
+                }
+            }
+        }
 
-        session(['cart' => $cart_arr]);
+        session(['cart' => $cart]);
 
-        return $cart_arr;
+        return $cart;
     }
+
 
     public static function getProductSum($productId)
     {
@@ -227,9 +270,7 @@ class Cart extends ServiceProvider
 
         foreach ($cart as $cartItem) {
             foreach ($cartItem as $item) {
-
                 $total += $item;
-
             }
         }
 

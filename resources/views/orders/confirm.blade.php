@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label for="identification_num" class="identification-num-show-js">Identification number</label>
-                    <input class="form-control @error('identification_num') is-invalid @enderror identification-num-show-js" type="text" id="identification_num" name="identification_num" value="{{ old('identification_num') }}">
+                    <input class="form-control @error('identification_num') is-invalid @enderror identification-num-show-js" type="text" pattern="[0-9]{8}" id="identification_num" name="identification_num" value="{{ old('identification_num') }}">
                     <div class="invalid-feedback">
                         @error ('identification_num') {{$message}}@enderror
                     </div>

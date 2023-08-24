@@ -15,7 +15,7 @@
                     <button class="btn cleare-cart" type="button" >Cleare cart</button>
                 </div>
                 @foreach ($products as $product)
-                    <div class="row py-3 align-items-center">
+                    <div class="row py-3 align-items-center" wire:key="{{ $product->sizeId }}">
                         <a href="{{ route('products.show', $product->code) }}" class="col-lg-2">
                             <img style="width: 100%" src="{{ $product->image_default }}" alt="">
                         </a>
@@ -40,7 +40,11 @@
                             {{$product->size}}
                         </div> --}}
                         <div class="col-lg-3">
+                            {{-- <span>{{ $product->size->size }}</span> --}}
+                            {{-- <span>{{ $product->sizes->first()->size }}</span> --}}
                             <span>{{ $product->size }}</span>
+                            <span>{{ $product->sizes->first()->quantity }}</span>
+
                             {{-- <select name="size" id="size_select" class="form-select">
 
                             </select> --}}
@@ -54,9 +58,9 @@
                             </div> --}}
 
                             <div class="d-flex" style="width: 100%">
-                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->size }}', -1)">-</button>
+                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->sizeId }}', -1)">-</button>
                                 <span class="cart-product-count">{{ $product->cart_amount }}</span>
-                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->size }}', 1)">+</button>
+                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->sizeId }}', 1)">+</button>
                             </div>
                         </div>
                         <div class="col-lg-2">
@@ -76,7 +80,12 @@
                             </div>
                             @endif
                         </div>
-                        <div class="col-lg-1 " wire:click="removeItem('{{ $product->id }}')">
+                        {{-- <div class="col-lg-1 " wire:click="removeItem('{{ $product->id }}')">
+                            <span class="btn btn-warning delete-item-cart-button delete-item-cart-product">
+                                X
+                            </span>
+                        </div> --}}
+                        <div class="col-lg-1" wire:click="removeItem({{ $product->id }}, '{{ $product->sizeId }}')">
                             <span class="btn btn-warning delete-item-cart-button delete-item-cart-product">
                                 X
                             </span>

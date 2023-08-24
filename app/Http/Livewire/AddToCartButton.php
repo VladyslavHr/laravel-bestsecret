@@ -10,12 +10,17 @@ class AddToCartButton extends Component
 {
     // public ?int $productCartCount;
     // public $product_count = [];
+
+    public $productCartCount;
+
     public $addToCartCount = 1;
     public $product;
     public $sizes;
+    public $productSizes;
     public $choosenSize = 'choose';
     public bool $showCartLink = false;
     public $sizesSelectClass = '';
+    public bool $maxProductCount = false;
 
     public function addToCart(): void
     {

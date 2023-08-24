@@ -10,18 +10,56 @@ use Illuminate\Support\Facades\Http;
 
 class ParserController extends Controller
 {
-    public function ac_get_product_link()
+    // public function ac_get_product_link($timeStart)
+    // {
+    //     // dd($request);
+    //     $time = $timeStart;
+    //     // $product = Product::where('description', null)->orWhere('parse_index' != $time)->first();
+    //     $product = Product::where('description', null)->where('parse_index', '!=', $time)->first();
+
+
+    //     if (!$product) {
+    //         return response()->json('No products', 404);
+    //     }
+
+    //     $code = explode('-', $product->code)[0];
+
+    //     $codeColor = explode('-', $product->code)[1];
+
+    //     $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
+
+    //     return [
+    //         'status' => 'ok',
+    //         'url' => $url,
+    //         'code' => $product->code,
+    //         'product' => $product,
+    //     ];
+    // }
+
+    public function ac_get_product_link($timeStart, $buttonName)
     {
-        $product = Product::where('description', null)->first();
+        if ($buttonName == 'ac_get_info_started') {
+            $product = Product::where(function ($query) use ($timeStart) {
+                $query->where('description', null)->orWhere('parse_index', '<>', $timeStart);
+            })->first();
+        }elseif ($buttonName == 'ac_get_info_continued') {
+            $product = Product::where('description', null)->first();
+        }
 
         if (!$product) {
+            //     $product->update([
+            //         'description' => '404',
+            //     ]);
+            // // Используем continue для перехода к следующему продукту
+            // return;
+            // return null;
             return response()->json('No products', 404);
+            // $product = new Product();
+            // $product->description = '404';
         }
 
         $code = explode('-', $product->code)[0];
-
         $codeColor = explode('-', $product->code)[1];
-
         $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
 
         return [
@@ -47,7 +85,7 @@ class ParserController extends Controller
             // 'description' => $request->product['description'] ? $request->product['description'] : '404',
             'description' => $request->product['description'] ?: '404',
             'product_link' => $request->product['link'],
-            'parse_index' => $request->product['time_start'],
+            'parse_index' => $request->product['timeStart'],
         ]);
 
 
@@ -93,9 +131,9 @@ class ParserController extends Controller
             'status' => 'ok',
             'request' => $request->all(),
             'sizes' => strlen(implode(',', $request->product['sizes'])),
-            'link' => $this->ac_get_product_link(),
+            'link' => $this->ac_get_product_link($request->product['timeStart'], $request->product['buttonName']),
             'product' => $product,
-            'parse_index' => $time,
+            'parse_index' => $request->product['timeStart'],
         ]);
 
     }

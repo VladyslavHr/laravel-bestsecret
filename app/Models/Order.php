@@ -45,4 +45,20 @@ class Order extends Model
         'created_at',
         'updated_at',
     ];
+
+
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_CREATED = 'created';
+    public const STATUS_PAID = 'paid';
+    public const STATUS_CANCELED = 'canceled';
+    public const STATUS_PAYMENT_METHOD_CHOSEN = 'payment_method_chosen';
+    public const STATUS_TIMEOUTED = 'timeouted';
+    public const STATUS_AUTHORIZED = 'authorized';
+    public const STATUS_REFUNDED = 'refunded';
+    public const STATUS_PARTIALLY_REFUNDED = 'partially_refunded';
+    public const STATUS_FAILED = 'failed';
+
+    public const STATUS_PREPARING = 'preparing';
+    public const STATUS_DELIVERED = 'delivered';
+    public const STATUS_RETURNED = 'returned';
 }

@@ -15,7 +15,6 @@
             <div class="other-colors pt-3">
                 {{-- {{ $similarProducts-> }} --}}
 
-
             </div>
         </div>
         <div class="col-lg-5">
@@ -64,7 +63,7 @@
                     @endif
                     @if ($product->category === 'men_accessoires')
                     <a href="{{ route('forMen.index') }}?store_category={{ $product->store_category }}">
-                        {{ $product->sub_category }}
+                        {{ $product->store_category }}
                     </a>
                     @endif
                 </li>
@@ -81,7 +80,7 @@
                 item number: {{ $product->code }}
             </span>
 
-            @livewire('add-to-cart-button', ['product' => $product, 'sizes' => $sizes])
+            @livewire('add-to-cart-button', ['product' => $product, 'sizes' => $sizes, 'productSizes' => $productSizes])
 
                 <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -96,7 +95,7 @@
     <div class="row py-5">
         <div class="home-demo">
             <h3 class="pb-2">Other colors you may like</h3>
-            <div class="owl-carousel owl-theme">
+            {{-- <div class="owl-carousel owl-theme">
                 @foreach ($similarProducts as $product)
                 <div class="item">
                     <a href="{{ route('products.show', $product->code) }}" class="product-link">
@@ -105,7 +104,7 @@
                     </a>
                 </div>
                 @endforeach
-            </div>
+            </div> --}}
         </div>
     </div>
 

@@ -8,7 +8,30 @@ use App\Models\{ProductGallery,Product};
 class ForMenController extends Controller
 {
     public function index(Request $request) {
-        $products = Product::where('category', 'men_accessoires')->get();
+        // $products = Product::where('category', 'men_accessoires')->where('description', '!=', '404')->get();
+        // $products = Product::where('category', 'men_accessoires')
+        // ->where('description', '!=', '404')
+        // ->where(function ($query) {
+        //     $query->whereHas('sizes', function ($subQuery) {
+        //         $subQuery->where('quantity', '>', 0);
+        //     });
+        // })
+        // ->get();
+    //     $products = Product::where('category', 'men_accessoires')
+    // ->where('description', '!=', '404')
+    // ->whereDoesntHave('sizes', function ($subQuery) {
+    //     $subQuery->where('quantity', 0);
+    // })
+    // ->get();
+
+    $products = Product::where('category', 'men_accessoires')
+    ->where('description', '!=', '404')
+    ->whereHas('sizes', function ($query) {
+        $query->where('quantity', '>', 0);
+    })->get();
+
+
+
 
         // $previous_url = $request->session()->put('_previous', url()->full());
 
