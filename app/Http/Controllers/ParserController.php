@@ -47,15 +47,7 @@ class ParserController extends Controller
         }
 
         if (!$product) {
-            //     $product->update([
-            //         'description' => '404',
-            //     ]);
-            // // Используем continue для перехода к следующему продукту
-            // return;
-            // return null;
             return response()->json('No products', 404);
-            // $product = new Product();
-            // $product->description = '404';
         }
 
         $code = explode('-', $product->code)[0];
@@ -73,7 +65,6 @@ class ParserController extends Controller
     public function ac_save_product_info(Request $request)
     {
         // $time = time();
-
         $product = Product::where('code', $request->code)->first();
 
         $product->update([
