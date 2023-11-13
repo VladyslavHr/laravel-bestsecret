@@ -24,11 +24,11 @@ class ForMenController extends Controller
     // })
     // ->get();
 
-    $products = Product::where('category', 'men_accessoires')
-    ->where('description', '!=', '404')
-    ->whereHas('sizes', function ($query) {
-        $query->where('quantity', '>', 0);
-    })->get();
+        $products = Product::where('category', 'men_accessoires')
+        ->where('description', '!=', '404')
+        ->whereHas('sizes', function ($query) {
+            $query->where('quantity', '>', 0);
+        })->get();
 
 
 

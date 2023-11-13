@@ -275,12 +275,15 @@ body{
     background-color: black;
     color: #fff;
     border: 0;
+    color: #fff;
+    text-decoration: none;
 }
 
 .order-buy-now:hover{
     background-color: #818080;
-    /* background-color: #3e3e3e; */
     transition: 0.4s;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* OWL Carousel */

@@ -4,7 +4,7 @@
 
 <div class="container">
     {{-- @livewire('sub-category', ['sub_category' => $sub_category]) --}}
-    @livewire('title', ['products' => $products])
+    @livewire('title', ['products' => $products, 'title' => $title])
 </div>
 
 @endsection

@@ -28,8 +28,8 @@
     </div>
     <div class="row">
         <div class="col-lg-3">
-{{--
-            <ul class="category-list">
+
+            {{-- <ul class="category-list">
                 <li class="category-item">
                     <a href="#"
                         class="category-list-link @if ($choosenStoreCategory === 'all')
@@ -55,6 +55,47 @@
                     </li>
                 @endforeach
             </ul> --}}
+
+            <ul class="category-list" >
+                <li class="category-item">
+                    <a href="#"
+                        class="category-list-link all-link @if ($choosenStoreCategory === 'all')
+                            category-list-link-active
+                        @endif"
+                        wire:click.prevent="changeCategory('all')">
+                            All accessories
+                        @if ($choosenStoreCategory === 'all')
+                            <i class="bi bi-check-lg"></i>
+                        @endif
+                    </a>
+                </li>
+                @foreach ($categoriesSorted as $category => $subCategories)
+                    <li class="category-list-element" >
+                        <a  class="category-list-link @if ($category == $choosenStoreCategory) category-list-link-active @endif"
+                            wire:click.prevent="changeCategory('{{ $category }}')"
+                            role="button"
+                            aria-expanded="false"
+                            >
+                            {{$category}}
+                            @if ($category == $choosenStoreCategory)
+                                <i class="bi bi-check-lg"></i>
+                            @endif
+                        </a>
+                        <ul class="ps-5 sub-categories-list">
+                            @foreach ($subCategories as $subCategory)
+                            <li >
+                                <a  wire:click.prevent="changeSubCategory('{{ $subCategory }}')" href="#">
+                                    {{ $subCategory }}
+                                </a>
+                                @if ($subCategory == $choosenSubCategory)
+                                <i class="bi bi-check-lg"></i>
+                                @endif
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
         </div>
         @foreach ($products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 product-wrap-card pb-3">

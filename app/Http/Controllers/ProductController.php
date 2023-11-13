@@ -38,7 +38,8 @@ class ProductController extends Controller
     {
         // dump($code);
         $product = Product::where('code', $code)->first();
-        // dd($product);
+        // dd($product->store_category);
+
 
         $images = [];
         foreach ($product->gallery as $image) {
@@ -52,46 +53,24 @@ class ProductController extends Controller
         // $product->sale = 100 - (($product->price / $product->old_price) * 100); ?????
 
         $size = str_replace('Select your size,', '', $product->size);
-
         $sizes = explode(',', $size);
-
         $color = explode(',', $product->color);
-
         $color = explode(' ', $color[1]);
-
         $color_separate = array_shift($color);
-
         $color_string = implode(' ', $color);
-        // dd($color_string);
-
 
         // SIZES!
         // $productSizes = $product->sizes;
         $productSizes = Size::where('product_id', $product->id)->where('size', '!=', 'Select your size')->get();
 
+        $exCode = explode('-', $product->code);
+        $otherColors = Product::whereRaw("SUBSTRING_INDEX(`code`, '-', 1) = ?", [$exCode[0]])->get();
 
-
-
-
-        // $codeExploded = explode('-', $code);
-
-        // $codeFirst = (int)$codeExploded[0];
-
-        // $similarProducts = Product::where('code', $codeFirst)->get();
-        // // dd($similarProducts);
-
-        // $color_string_similar = [];
-        // foreach ($similarProducts as $product) {
-        //     $colorSimilar = explode(',', $product->color);
-        //     // dd($similarProducts);
-
-        //     $colorSimilar = explode(' ', $colorSimilar[1]);
-
-        //     $color_separate_similar = array_shift($colorSimilar);
-
-        //     $color_string_similar = implode(' ', $colorSimilar);
-
-        // }
+        foreach ($otherColors as $item) {
+            $expColor = explode(',', $item->color);
+            $item->category_name = $expColor[0];
+            $item->color_name = $expColor[1];
+        }
 
         return view('products.show',[
             'product' => $product,
@@ -99,8 +78,7 @@ class ProductController extends Controller
             'sizes' => $sizes,
             'color_string' => $color_string,
             'productSizes' => $productSizes,
-            // 'similarProducts' => $similarProducts,
-            // 'color_string_similar' => $color_string_similar,
+            'otherColors' => $otherColors,
         ]);
     }
 
@@ -144,6 +122,7 @@ class ProductController extends Controller
 
     public function titles($title)
     {
+        dump($title);
         $products = Product::where('title', $title)
         ->whereHas('sizes', function ($query) {
             $query->where('quantity', '>', 0);
@@ -157,6 +136,7 @@ class ProductController extends Controller
 
         return view('products.titles',[
             'products' => $products,
+            'title' => $title,
         ]);
     }
 

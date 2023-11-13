@@ -36,28 +36,12 @@
                                 {{$product->sub_category}}
                             </div>
                         </div>
-                        {{-- <div class="col-lg-1">
-                            {{$product->size}}
-                        </div> --}}
                         <div class="col-lg-3">
-                            {{-- <span>{{ $product->size->size }}</span> --}}
-                            {{-- <span>{{ $product->sizes->first()->size }}</span> --}}
                             <span>{{ $product->size }}</span>
-                            <span>{{ $product->sizes->first()->quantity }}</span>
-
-                            {{-- <select name="size" id="size_select" class="form-select">
-
-                            </select> --}}
+                            {{-- <span>{{ $product->sizes->first()->quantity }}</span> --}}
                         </div>
                         <div class="col-lg-1">
-                            {{-- <input type="number" wire:model="productCount" min="0" max="{{ $product->amount }}" /> --}}
-                            {{-- <div class=" d-flex" style="width: 100%">
-                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{$product->id}}, 'amount', -1)">-</button>
-                                <span class="cart-product-count">{{ $productCount }}</span>
-                                <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{$product->id}}, 'amount', 1)">+</button>
-                            </div> --}}
-
-                            <div class="d-flex" style="width: 100%">
+                            <div class="d-flex align-items-center" style="width: 100%">
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->sizeId }}', -1)">-</button>
                                 <span class="cart-product-count">{{ $product->cart_amount }}</span>
                                 <button type="button" class="btn cart-prod-qnt-chng" wire:click="changeCount({{ $product->id }}, '{{ $product->sizeId }}', 1)">+</button>
@@ -142,11 +126,21 @@
                         {{-- {{ number_format($totalPrice, 0, ',', ' ') }} KČ --}}
                     </b>
                 </div>
-                <div class="order-link mt-4">
+                {{-- <div class="">
+                    <a href="{{ route('orders.confirm') }}">CONTINUE</a>
+
+                </div> --}}
+                    <a class="order-buy-now d-block mt-4 mb-5" href="{{ route('orders.confirm') }}" >
+                        CONTINUE
+                    </a>
+                {{-- <button class="order-buy-now mt-4 mb-5" type="button"> --}}
+
+                {{-- </button> --}}
+                {{-- <div class="order-link mt-4">
                     <a href="{{ route('orders.confirm') }}" >
                         CONTINUE
                     </a>
-                </div>
+                </div> --}}
             </div>
 
             <div class="order-summary-bottom">
@@ -159,6 +153,11 @@
                     </span>
                 </div>
                 <div class="order-link-small">
+                    <button class="order-buy-now mt-2 mb-5" type="button">
+                        <a href="{{ route('orders.confirm') }}" >
+                            CONTINUE
+                        </a>
+                    </button>
                     <a href="{{ route('orders.confirm') }}" >
                         CONTINUE
                     </a>

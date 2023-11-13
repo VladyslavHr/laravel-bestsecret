@@ -47,6 +47,7 @@ class ForMenListBlock extends Component
         debug($subCategory);
     }
 
+
     public function setQueryParams($params = [])
     {
         $this->queryParams = array_merge($this->queryParams, $params);
@@ -73,6 +74,9 @@ class ForMenListBlock extends Component
         if ($sub_category = request('sub_category')) {
             $this->choosenSubCategory = $sub_category;
         }
+
+        debug($this->choosenStoreCategory);
+        debug($this->choosenSubCategory);
 
     }
 
@@ -114,19 +118,24 @@ class ForMenListBlock extends Component
         //         ->from('sizes')
         //         ->where('quantity', '>', 0);
         // });
+        debug($products);
 
         if ($this->choosenStoreCategory !== 'all') {
+            debug($this->choosenStoreCategory);
             $products->where('store_category', $this->choosenStoreCategory);
         }
 
         if ($this->choosenSubCategory) {
+            debug($this->choosenSubCategory);
             $products->where('sub_category', $this->choosenSubCategory);
         }
 
-        debug($this->choosenStoreCategory);
+        // debug($this->choosenStoreCategory);
 
         $products = $products->orderBy($this->sortingBy, $this->sortingDirection)->paginate(150);
-        return view('livewire.for-women-list-block', [
+
+        debug($products);
+        return view('livewire.for-men-list-block', [
             'products' => $products,
             // 'store_categories' => $store_categories,
             'categoriesSorted' => $categoriesSorted,

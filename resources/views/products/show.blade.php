@@ -3,18 +3,14 @@
 @section('content')
 
 <div class="container">
-    <a href="{{ url()->previous() }}">
+    {{-- <a href="{{ url()->previous() }}">
         Back
         <i class="bi bi-backspace-fill"></i>
-    </a>
+    </a> --}}
     <div class="row">
         <div class="col-lg-7">
             <div class="carousel-wrap">
                 @include('components.fancybox')
-            </div>
-            <div class="other-colors pt-3">
-                {{-- {{ $similarProducts-> }} --}}
-
             </div>
         </div>
         <div class="col-lg-5">
@@ -45,24 +41,24 @@
                 </li>
                 <li>
                     @if ($product->category === 'women_accessoires')
-                    <a href="{{ route('forWomen.index') }}?store_category={{ $product->store_category }}&sub_category={{ $product->sub_category }}">
+                    <a href="{{ route('forWomen.index') }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
                         {{ $product->sub_category }}
                     </a>
                     @endif
                     @if ($product->category === 'men_accessoires')
-                    <a href="{{ route('forMen.index') }}?store_category={{ $product->store_category }}&sub_category={{ $product->sub_category }}">
+                    <a href="{{ route('forMen.index') }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
                         {{ $product->sub_category }}
                     </a>
                     @endif
                 </li>
                 <li>
                     @if ($product->category === 'women_accessoires')
-                    <a href="{{ route('forWomen.index') }}?store_category={{ $product->store_category }}">
+                    <a href="{{ route('forWomen.index') }}?store_category={{ urlencode($product->store_category) }}">
                         {{ $product->store_category }}
                     </a>
                     @endif
                     @if ($product->category === 'men_accessoires')
-                    <a href="{{ route('forMen.index') }}?store_category={{ $product->store_category }}">
+                    <a href="{{ route('forMen.index') }}?store_category={{ urlencode($product->store_category) }}">
                         {{ $product->store_category }}
                     </a>
                     @endif
@@ -93,23 +89,23 @@
         </div>
     </div>
     <div class="row py-5">
+        @if (isset($otherColors) && $otherColors->count() > 1)
         <div class="home-demo">
             <h3 class="pb-2">Other colors you may like</h3>
-            {{-- <div class="owl-carousel owl-theme">
-                @foreach ($similarProducts as $product)
+            <div class="owl-carousel owl-theme">
+                @foreach ($otherColors as $product)
                 <div class="item">
                     <a href="{{ route('products.show', $product->code) }}" class="product-link">
                         <img src="{{ $product->image_default }}" class="" alt="">
-                        <h3>{{ $color_string_similar }}</h3>
+                        <h4>{{ $product->category_name }}</h4>
+                        <h4>{{ $product->color_name }}</h4>
                     </a>
                 </div>
                 @endforeach
-            </div> --}}
+            </div>
         </div>
+        @endif
     </div>
-
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
