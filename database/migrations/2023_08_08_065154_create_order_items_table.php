@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('order_id');
+            $table->bigInteger('product_id');
             $table->string('product_code');
             $table->string('product_title');
             $table->bigInteger('product_sizeId');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->double('product_old_price');
             $table->double('product_sale');
             $table->double('product_price');
+            $table->double('product_marged_price');
             $table->timestamps();
         });
     }

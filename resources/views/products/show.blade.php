@@ -21,8 +21,9 @@
             @if ($product->new_sale > 5)
             <div class="price-and-sale">
                 <span class="show-old-price-cross me-3">{{ number_format($product->old_price, 0, ',', ' ') }} CZK</span>
-                <span class="show-product-sale">-{{ number_format($product->new_sale) }} %</span>
+                <span class="show-product-sale">-{{ $product->new_sale }} %</span>
             </div>
+            {{-- number_format() --}}
             <div class="show-price">
                 {{ number_format($product->marged_price, 0, ',', ' ')  }} CZK
             </div>

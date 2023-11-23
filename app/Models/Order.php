@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'firm',
@@ -61,4 +62,8 @@ class Order extends Model
     public const STATUS_PREPARING = 'preparing';
     public const STATUS_DELIVERED = 'delivered';
     public const STATUS_RETURNED = 'returned';
+
+    public function items() {
+        return $this->hasMany('App\Models\OrderItem');
+    }
 }

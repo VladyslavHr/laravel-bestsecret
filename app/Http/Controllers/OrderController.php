@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateOrderRequest;
 use App\Models\{Order,OrderItem};
 use App\Services\Cart;
+use App\Notifications\{OrderClientStore,OrderClientStoreAdmin};
+use App\Jobs\SendMail;
+
 
 class OrderController extends Controller
 {
@@ -29,8 +32,10 @@ class OrderController extends Controller
 
     public function createOrder(CreateOrderRequest $request)
     {
+
         $products = Cart::getProducts();
         $order = Order::create([
+
             'firm' => $request->firm,
             'identification_num' => $request->identification_num,
             'name' => $request->name,
@@ -61,6 +66,7 @@ class OrderController extends Controller
             // $price_one = $product->new_sum / $product->cart_amoun;
             // $old_price_one = $product->old_sum / $product->cart_amount;
             // dd($product->new_sum, $product->cart_amoun);
+            // dd($product->id);
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $product->id,
@@ -75,28 +81,76 @@ class OrderController extends Controller
                 'product_old_price' => $product->old_price,
                 'product_sale' => $product->sale,
                 'product_price' => $product->price,
+                'product_marged_price' => $product->marged_price,
+            ]);
+        }
+        $last = Order::orderBy('numeric_series', 'desc')->pluck('numeric_series')->first();
+
+        if ($last == null) {
+            $order->update([
+                'numeric_series' => 230001,
+            ]);
+        }else{
+            $order->update([
+                'numeric_series' => $last + 1,
             ]);
         }
 
-        // $last = Order::orderBy('numeric_series', 'desc')->pluck('numeric_series')->first();
-        // if ($last == null) {
-        //     $order->numeric_series = 230001;
-        // }else{
-        //     $order->numeric_series = $last + 1;
-        // }
-
         return $order;
-        // return redirect()->route('orders.thanks');
     }
 
     public function pay(CreateOrderRequest  $request)
     {
+
         $order = $this->createOrder($request);
-        return  redirect()->route('orders.thanks');
+
+        // foreach ($order->items as $item) {
+        //     $item->size->update([
+        //         'quantity' => $item->size->quantity - $item->product_count
+        //     ]);
+        // }
+
+        session()->forget('cart');
+
+        // $order->notify(new OrderClientStore($order));
+        SendMail::dispatch($order);
+
+        return  redirect()->route('orders.thanks', $order);
     }
 
-    public function thanks()
+    public function thanks($order)
     {
-        return view('orders.thanks');
+        $order = Order::where('id', $order)->first();
+        return view('orders.thanks',[
+            'order' => $order,
+        ]);
+    }
+
+
+    public function mailTest()
+    {
+        $order = Order::findOrFail(55);
+
+        // $path = public_path('logo/logo.png');
+        // $type = pathinfo($path, PATHINFO_EXTENSION);
+        // $data_img = file_get_contents($path);
+        // $logo = 'data:image/' . $type . ';base64,' . base64_encode($data_img);
+
+        return view('emails.newOrderClient', [
+            'order' => $order,
+            // 'logo' => $logo,
+        ]);
+    }
+
+    public function pdfTest()
+    {
+        $orderId = 57;
+
+        // $pdf = \App\Services\OrderPdf::pdfInvoice($orderId);
+        $pdf = \App\Services\OrderPdf::pdfInvoice($orderId);
+
+        return $pdf->stream();
+        return response($pdf->output(), 200)
+        ->header('Content-Type', 'aplication/pdf');
     }
 }

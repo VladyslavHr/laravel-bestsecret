@@ -11,6 +11,7 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
+        'product_id',
         'product_code',
         'product_title',
         'product_sizeId',
@@ -22,6 +23,7 @@ class OrderItem extends Model
         'product_old_price',
         'product_sale',
         'product_price',
+        'product_marged_price',
     ];
 
     protected $dates = [
@@ -36,4 +38,9 @@ class OrderItem extends Model
     public function product() {
         return $this->belongsTo('App\Models\Product', 'product_id');
     }
+
+    public function size() {
+        return $this->belongsTo('App\Models\Size', 'product_sizeId');
+    }
+
 }

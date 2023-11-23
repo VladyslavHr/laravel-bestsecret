@@ -15,7 +15,11 @@ $(document).on('click', '.pagination .page-item', function (e) {
   });
 
 
-
+  $(document).ready(function(){
+    $("#order_submit").on("submit", function(){
+      $("#pageloader_order").fadeIn();
+    });//submit
+  });//document ready
 
 // // Add event listeners for the checkboxes
 // $("#firm_buy").change(chooseFirm);

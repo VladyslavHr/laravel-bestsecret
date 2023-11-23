@@ -42,12 +42,15 @@ class Product extends Model
 
     public function getMargedPriceAttribute()
     {
-        return $this->price * 1.3;
+        $price = $this->price * 1.3;
+        return round($price);
+        // return $this->price * 1.3;
     }
 
     public function getNewSaleAttribute()
     {
-        return $this->new_sale = 100 - (($this->marged_price / $this->old_price) * 100);
+        $newSale = 100 - (($this->marged_price / $this->old_price) * 100);
+        return round($newSale);
     }
 
     public function getNewPriceAttribute()

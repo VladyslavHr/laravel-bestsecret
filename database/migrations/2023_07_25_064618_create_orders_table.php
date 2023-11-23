@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('delivery_status')->default('preparing');
             $table->string('delivery_track')->nullable();
             $table->string('firm')->nullable();
-            $table->integer('identification_num')->nullable();
+            $table->string('identification_num')->nullable();
             $table->string('name');
             $table->string('last_name');
             $table->string('email');
@@ -33,7 +33,7 @@ return new class extends Migration
             $table->integer('post_code');
             $table->string('city');
             $table->string('firm_bill')->nullable();
-            $table->integer('identification_num_bill')->nullable();
+            $table->string('identification_num_bill')->nullable();
             $table->string('name_bill')->nullable();
             $table->string('last_name_bill')->nullable();
             $table->string('email_bill')->nullable();
