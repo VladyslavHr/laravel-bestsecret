@@ -36,30 +36,30 @@
             <h5>Find more ...</h5>
             <ul class="product-categories-links">
                 <li>
-                    <a href="{{ route('products.titles', $product->title) }}">
+                    <a href="{{ route('products.titles', ['locale' => app()->getLocale()], $product->title) }}">
                         {{ $product->title }}
                     </a>
                 </li>
                 <li>
                     @if ($product->category === 'women_accessoires')
-                    <a href="{{ route('forWomen.index') }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
+                    <a href="{{ route('forWomen.index', ['locale' => app()->getLocale()]) }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
                         {{ $product->sub_category }}
                     </a>
                     @endif
                     @if ($product->category === 'men_accessoires')
-                    <a href="{{ route('forMen.index') }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
+                    <a href="{{ route('forMen.index', ['locale' => app()->getLocale()]) }}?store_category={{ urlencode($product->store_category) }}&sub_category={{ urlencode($product->sub_category) }}">
                         {{ $product->sub_category }}
                     </a>
                     @endif
                 </li>
                 <li>
                     @if ($product->category === 'women_accessoires')
-                    <a href="{{ route('forWomen.index') }}?store_category={{ urlencode($product->store_category) }}">
+                    <a href="{{ route('forWomen.index', ['locale' => app()->getLocale()]) }}?store_category={{ urlencode($product->store_category) }}">
                         {{ $product->store_category }}
                     </a>
                     @endif
                     @if ($product->category === 'men_accessoires')
-                    <a href="{{ route('forMen.index') }}?store_category={{ urlencode($product->store_category) }}">
+                    <a href="{{ route('forMen.index', ['locale' => app()->getLocale()]) }}?store_category={{ urlencode($product->store_category) }}">
                         {{ $product->store_category }}
                     </a>
                     @endif
@@ -96,7 +96,7 @@
             <div class="owl-carousel owl-theme">
                 @foreach ($otherColors as $product)
                 <div class="item">
-                    <a href="{{ route('products.show', $product->code) }}" class="product-link">
+                    <a href="{{ route('products.show', ['locale' => app()->getLocale()], $product->code) }}" class="product-link">
                         <img src="{{ $product->image_default }}" class="" alt="">
                         <h4>{{ $product->category_name }}</h4>
                         <h4>{{ $product->color_name }}</h4>

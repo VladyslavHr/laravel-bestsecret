@@ -3,7 +3,7 @@
         @if (Cart::isEmpty())
         <div class="py-5 text-center">
             <h1 class="pb-5">Your cart is empty, got the shop to full your cart.</h1>
-            <a class="link-to-pick-ticket fs-4" href="{{ route('home.index') }}">
+            <a class="link-to-pick-ticket fs-4" href="{{ route('home.index', ['locale' => app()->getLocale()]) }}">
                 <i class="bi bi-box-arrow-in-right"></i>
                 To the shop
             </a>
@@ -16,7 +16,7 @@
                 </div>
                 @foreach ($products as $product)
                     <div class="row py-3 align-items-center" wire:key="{{ $product->sizeId }}">
-                        <a href="{{ route('products.show', $product->code) }}" class="col-lg-2">
+                        <a href="{{ route('products.show', ['locale' => app()->getLocale()], $product->code) }}" class="col-lg-2">
                             <img style="width: 100%" src="{{ $product->image_default }}" alt="">
                         </a>
                         <div class="col-lg-3">
@@ -130,7 +130,7 @@
                     <a href="{{ route('orders.confirm') }}">CONTINUE</a>
 
                 </div> --}}
-                    <a class="order-buy-now d-block mt-4 mb-5" href="{{ route('orders.confirm') }}" >
+                    <a class="order-buy-now d-block mt-4 mb-5" href="{{ route('orders.confirm', ['locale' => app()->getLocale()]) }}" >
                         CONTINUE
                     </a>
                 {{-- <button class="order-buy-now mt-4 mb-5" type="button"> --}}
@@ -154,11 +154,11 @@
                 </div>
                 <div class="order-link-small">
                     <button class="order-buy-now mt-2 mb-5" type="button">
-                        <a href="{{ route('orders.confirm') }}" >
+                        <a href="{{ route('orders.confirm', ['locale' => app()->getLocale()]) }}" >
                             CONTINUE
                         </a>
                     </button>
-                    <a href="{{ route('orders.confirm') }}" >
+                    <a href="{{ route('orders.confirm', ['locale' => app()->getLocale()]) }}" >
                         CONTINUE
                     </a>
                 </div>

@@ -6,7 +6,7 @@
     <div id="pageloader_order">
         <img class="preloader-img" src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
     </div>
-    <form action="{{ route('orders.pay') }}" method="POST" class="row preloader-overlay" id="order_submit">
+    <form action="{{ route('orders.create') }}" method="POST" class="row preloader-overlay" id="order_submit">
         @csrf
         <div  class="col-lg-7">
             <div class="pb-5 d-flex justify-content-evenly">

@@ -3,6 +3,92 @@ body{
     font-family: Avenir LT W45 Book,Avenir LT W01_45 Book1475508,Helvetica Neue,Helvetica,Arial,sans-serif;
 
 }
+
+.navbar{
+    flex-wrap: wrap!important;
+}
+
+.sticky-nav{
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background-color: #fff;
+}
+
+.nav-logo-link,
+.nav-user-link,
+.nav-admin-link{
+    display: none;
+}
+
+.drop-z-index{
+    z-index: 1025;
+}
+
+.fs-bs{
+    font-size: 18px;
+}
+
+.main-color{
+    color: black;
+}
+
+.main-bg-color{
+    background-color: black;
+}
+
+.main-alt-color{
+    color: #fff;
+}
+
+.main-alt-bg-color{
+    background-color: #fff;
+}
+
+.sub-color{
+    color: #686868;
+}
+
+.sub-bg-color{
+    background-color: #686868;
+}
+
+.btn-main{
+    background-color: black;
+    color: #fff;
+}
+
+.btn-main:hover{
+    background-color: #686868!important;
+    color: #fff!important;
+    transition: 0.4s;
+}
+
+.btn-main:focus-visible{
+    background-color: black;
+    color: #fff;
+    box-shadow: 0 0 3px 1px black;
+}
+
+.box-main{
+    width: 50px;
+    height: 18px;
+}
+
+.btn-link-main{
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.btn-link-main:hover{
+    background-color: #686868;
+    color: #fff;
+    transition: 0.4s;
+}
+
 .product-wrap-card {
     position: relative;
 }
@@ -343,6 +429,25 @@ body{
   right: 0;
 }
 
+.active-bs{
+    background-color: black!important;
+    color: #fff!important;
+}
+
+.active-bs:hover{
+    background-color: #818080!important;
+    transition: 0.4s;
+    color: #fff;
+}
+
+.nav-link-bs{
+    color: #686868!important;
+}
+
+.nav-link-bs.active-bs{
+    color: #fff!important;
+}
+
 @media (max-width: 1399px){
     /* .product-wrap-card:hover .product-image-card-additional {
         max-height: 320px;
@@ -382,4 +487,24 @@ body{
     .carousel-wrap{
         padding: 0;
     }
+
+    .sticky-nav{
+        position: unset;
+    }
+
+    .top-nav-links{
+        display: none;
+    }
+
+    .nav-logo-link,
+    .nav-user-link,
+    .nav-admin-link{
+        display: block;
+    }
+    /* .nav-admin-link,
+    .nav-user-link{
+        visibility: hidden;
+    } */
+
+
 }

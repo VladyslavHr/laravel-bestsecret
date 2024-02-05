@@ -34,7 +34,7 @@ class SendMail implements ShouldQueue
      */
     public function handle()
     {
-        $admins = User::get();
+        $admins = User::where('admin', 1)->get();
         $this->order->notify(new OrderClientStore($this->order));
         Notification::send($admins, new OrderAdminStore($this->order));
 

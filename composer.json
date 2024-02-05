@@ -13,7 +13,9 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "livewire/livewire": "^2.11",
-        "simplehtmldom/simplehtmldom": "^2.0@RC"
+        "propaganistas/laravel-phone": "^5.0",
+        "simplehtmldom/simplehtmldom": "^2.0@RC",
+        "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

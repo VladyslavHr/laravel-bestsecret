@@ -16,7 +16,7 @@
 
             @foreach ($brands as $brand)
             <div class="col-lg-4">
-                <a href="{{ route('brands.show', $brand) }}">
+                <a href="{{ route('brands.show', ['locale' => app()->getLocale()], $brand) }}">
                     {{ $brand }}
                 </a>
             </div>

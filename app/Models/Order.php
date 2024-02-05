@@ -40,6 +40,7 @@ class Order extends Model
         'status_response',
         'numeric_series',
         'refund',
+        'user_id',
     ];
 
     protected $dates = [
@@ -65,5 +66,9 @@ class Order extends Model
 
     public function items() {
         return $this->hasMany('App\Models\OrderItem');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

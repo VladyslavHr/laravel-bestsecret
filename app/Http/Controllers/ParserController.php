@@ -36,8 +36,37 @@ class ParserController extends Controller
     //     ];
     // }
 
+    // public function ac_get_product_link($timeStart, $buttonName)
+    // {
+    //     if ($buttonName == 'ac_get_info_started') {
+    //         $product = Product::where(function ($query) use ($timeStart) {
+    //             $query->where('description', null)->orWhere('parse_index', '<>', $timeStart);
+    //         })->first();
+    //     }elseif ($buttonName == 'ac_get_info_continued') {
+    //         $product = Product::where('description', null)->first();
+    //     }
+
+    //     if (!$product) {
+    //         return response()->json('No products', 404);
+    //     }
+
+    //     $code = explode('-', $product->code)[0];
+    //     $codeColor = explode('-', $product->code)[1];
+    //     $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
+
+    //     return [
+    //         'status' => 'ok',
+    //         'url' => $url,
+    //         'code' => $product->code,
+    //         'product' => $product,
+    //     ];
+    // }
+
+
     public function ac_get_product_link($timeStart, $buttonName)
     {
+        $product = null; // Инициализация переменной
+
         if ($buttonName == 'ac_get_info_started') {
             $product = Product::where(function ($query) use ($timeStart) {
                 $query->where('description', null)->orWhere('parse_index', '<>', $timeStart);
@@ -46,86 +75,90 @@ class ParserController extends Controller
             $product = Product::where('description', null)->first();
         }
 
-        if (!$product) {
+        if ($product) {
+            $code = explode('-', $product->code)[0];
+            $codeColor = explode('-', $product->code)[1];
+            $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
+
+            return [
+                'status' => 'ok',
+                'url' => $url,
+                'code' => $product->code,
+                'product' => $product,
+            ];
+        } else {
+            // Обработка случая, когда продукт не найден
             return response()->json('No products', 404);
         }
-
-        $code = explode('-', $product->code)[0];
-        $codeColor = explode('-', $product->code)[1];
-        $url = "https://www.bestsecret.com/product.htm?code=$code&colorCode=$codeColor";
-
-        return [
-            'status' => 'ok',
-            'url' => $url,
-            'code' => $product->code,
-            'product' => $product,
-        ];
     }
+
 
     public function ac_save_product_info(Request $request)
     {
         // $time = time();
         $product = Product::where('code', $request->code)->first();
+        // dump($product);
+        if ($product != null) {
 
-        $product->update([
-            'size' => implode(',', $request->product['sizes']),
-            'amount' => $request->product['amount'],
-            'color' => $request->product['color'],
-            'store_category' => $request->product['store_category'],
-            'sub_category' => $request->product['sub_category'],
-            // 'description' => $request->product['description'] ? $request->product['description'] : '404',
-            'description' => $request->product['description'] ?: '404',
-            'product_link' => $request->product['link'],
-            'parse_index' => $request->product['timeStart'],
-        ]);
-
-
-        if ($product->description == '404') {
-            Size::updateOrCreate([
-                'product_id' => $product->id,
-                'size' => null,
-                'quantity' => null,
+            $product->update([
+                'size' => implode(',', $request->product['sizes']),
+                'amount' => $request->product['amount'],
+                'color' => $request->product['color'],
+                'store_category' => $request->product['store_category'],
+                'sub_category' => $request->product['sub_category'],
+                // 'description' => $request->product['description'] ? $request->product['description'] : '404',
+                'description' => $request->product['description'] ?: '404',
+                'product_link' => $request->product['link'],
+                'parse_index' => $request->product['timeStart'],
             ]);
-        }else{
-            foreach ($request->product['sizes'] as $size) {
 
-                if (!$request->product['amount'] ) {
-                    if (strstr($size, "(sold out)")) {
-                        $quantity = 0;
-                    }elseif (strstr($size, "(1 left)")) {
-                        $quantity = 1;
-                    }elseif(strstr($size, "(2 left)")){
-                        $quantity = 2;
-                    }else{
-                        $quantity = 5;
-                    }
-                }else{
-                    $quantity = $request->product['amount'];
-                }
-
+            if ($product->description == '404') {
                 Size::updateOrCreate([
                     'product_id' => $product->id,
-                    'size' => $size,
-                    'quantity' => $quantity,
+                    'size' => null,
+                    'quantity' => null,
                 ]);
-            };
-        }
+            }else{
+                foreach ($request->product['sizes'] as $size) {
 
-        foreach ($request->product['images'] as $image) {
-            ProductGallery::updateOrCreate([
-                'product_id' => $product->id,
-                'image' => $image,
+                    if (!$request->product['amount'] ) {
+                        if (strstr($size, "(sold out)")) {
+                            $quantity = 0;
+                        }elseif (strstr($size, "(1 left)")) {
+                            $quantity = 1;
+                        }elseif(strstr($size, "(2 left)")){
+                            $quantity = 2;
+                        }else{
+                            $quantity = 5;
+                        }
+                    }else{
+                        $quantity = $request->product['amount'];
+                    }
+
+                    Size::updateOrCreate([
+                        'product_id' => $product->id,
+                        'size' => $size,
+                        'quantity' => $quantity,
+                    ]);
+                };
+            }
+
+            foreach ($request->product['images'] as $image) {
+                ProductGallery::updateOrCreate([
+                    'product_id' => $product->id,
+                    'image' => $image,
+                ]);
+            }
+
+            return([
+                'status' => 'ok',
+                'request' => $request->all(),
+                'sizes' => strlen(implode(',', $request->product['sizes'])),
+                'link' => $this->ac_get_product_link($request->product['timeStart'], $request->product['buttonName']),
+                'product' => $product,
+                'parse_index' => $request->product['timeStart'],
             ]);
         }
-
-        return([
-            'status' => 'ok',
-            'request' => $request->all(),
-            'sizes' => strlen(implode(',', $request->product['sizes'])),
-            'link' => $this->ac_get_product_link($request->product['timeStart'], $request->product['buttonName']),
-            'product' => $product,
-            'parse_index' => $request->product['timeStart'],
-        ]);
 
     }
 
@@ -154,7 +187,8 @@ class ParserController extends Controller
 
             $sale = preg_replace('/\D/', '', $product['sale']);
 
-            $sale = abs($sale);
+            // $sale = abs($sale);
+            $sale = is_numeric($sale) ? abs((float)$sale) : 0;
 
             $price_replace = [
                 '.',
@@ -175,12 +209,20 @@ class ParserController extends Controller
                 'sub_description' => $product['desc'],
                 'image_default' => $product['image_default'],
                 'image_additional' => $product['image_additional'],
-                'old_price' => str_replace($price_replace_sale, '', $product['old_price']) ,
-                // 'old_price' => str_replace('RRP Kc', '', $product['old_price']) ,
-                'price' => str_replace($price_replace, '', $product['price']) ,
-                // 'price' => str_replace('Kc', '', $product['price']) ,
-                'sale' => str_replace('%', '', $product['sale']),
-                'sale' => $sale,
+                // 'old_price' => str_replace($price_replace_sale, '', $product['old_price']) ,
+                // 'price' => str_replace($price_replace, '', $product['price']) ,
+                // 'sale' => str_replace('%', '', $product['sale']),
+                // 'sale' => $sale,
+
+                'old_price' => is_numeric(str_replace($price_replace_sale, '', $product['old_price']))
+                        ? str_replace($price_replace_sale, '', $product['old_price'])
+                        : 0,
+                'price' => is_numeric(str_replace($price_replace, '', $product['price']))
+                        ? str_replace($price_replace, '', $product['price'])
+                        : 0,
+                'sale' => is_numeric(str_replace('%', '', $product['sale']))
+                        ? str_replace('%', '', $product['sale'])
+                        : 0,
             ]);
 
             // @$counter[$output['code']] += 1;

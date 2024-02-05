@@ -15,6 +15,8 @@ class HomeControllerMy extends Controller
         //     dump($user->isAdmin());
         // }
         // dd($users);
+        // dd(session('locale'));
+
         $brands = Product::where('title', '!=', ' ')
             ->distinct('title')->pluck('title');
 

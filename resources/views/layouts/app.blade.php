@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" />
+    <link href="{{ asset("css/toastr.min.css") }}" rel="stylesheet"/>
 
     <link rel="stylesheet" href="{{ asset ('css/main.css?v=' . filemtime(public_path('css/main.css')) ) }}">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -59,7 +60,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-
+    <script src="{{ asset("js/toastr.min.js") }}"></script>
 
     @livewireScripts
 

@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(session('locale'));
         return view('home');
     }
 }

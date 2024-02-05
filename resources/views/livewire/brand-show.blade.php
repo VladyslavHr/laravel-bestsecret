@@ -67,7 +67,7 @@
 
         @foreach ($products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 product-wrap-card pb-3">
-            <a href="{{ route('products.show', $product->code) }}" class="product-link">
+            <a href="{{ route('products.show', ['locale' => app()->getLocale()], $product->code) }}" class="product-link">
                 <img src="{{ $product->image_default }}" class="product-image-card" alt="">
                 <img src="{{ $product->image_additional }}" class="product-image-card-additional" alt="">
                 <h2 class="text-center pt-2">{{ $product->title }}</h2>

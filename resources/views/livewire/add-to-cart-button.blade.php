@@ -23,7 +23,7 @@
         {{-- {{ $cart[$product->id] ?? '' }} --}}
 
         @if ($showCartLink)
-            <a href="{{ route('carts.index') }}" class="btn product-show-link-to-card" >
+            <a href="{{ route('carts.index', ['locale' => app()->getLocale()]) }}" class="btn product-show-link-to-card" >
                 CART
                 <span class="cart-count-porduct">{{ Cart::getTotalCount() }}</span>
             </a>

@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
-            <a href="{{ route('forWomen.index') }}">
+            <a href="{{ route('forWomen.index', ['locale' => app()->getLocale()]) }}">
                 {{ strtoupper('For Women') }}
             </a>
         </div>
         <div class="col-lg-6">
-            <a href="{{ route('forMen.index') }}">
+            <a href="{{ route('forMen.index', ['locale' => app()->getLocale()]) }}">
                 {{ strtoupper('For Men')}}
             </a>
         </div>

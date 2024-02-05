@@ -36,6 +36,7 @@ class OrderController extends Controller
         $products = Cart::getProducts();
         $order = Order::create([
 
+            'user_id' => auth()->user()->id ?? null,
             'firm' => $request->firm,
             'identification_num' => $request->identification_num,
             'name' => $request->name,

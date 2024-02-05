@@ -21,6 +21,25 @@ $(document).on('click', '.pagination .page-item', function (e) {
     });//submit
   });//document ready
 
+
+  toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+
 // // Add event listeners for the checkboxes
 // $("#firm_buy").change(chooseFirm);
 // $("#bill_equal_address").change(chooseEqualAddress);

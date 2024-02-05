@@ -38,7 +38,7 @@
         </div>
         @foreach ($men_products as $product)
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="{{ route('products.show', $product->code) }}">
+            <a href="{{ route('products.show', ['locale' => app()->getLocale()], $product->code) }}">
                 <img style="width: 100%" src="{{ $product->image_default }}" alt="">
                 <h2>{{ $product->title }}</h2>
                 <p>{{ $product->code }}</p>

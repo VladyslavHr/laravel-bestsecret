@@ -27,7 +27,7 @@ class CreateOrderRequest extends FormRequest
             'name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
+            'phone' => '',
             'street' => 'required',
             'add_address' => '',
             'post_code' => 'required',
